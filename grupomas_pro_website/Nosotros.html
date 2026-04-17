@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo MAS | Nosotros</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ================= ISO LATERAL ================= */
+
+.iso-tab{
+position:fixed;
+right:0;
+top:50%;
+transform:translateY(-50%);
+z-index:9999;
+display:flex;
+align-items:center;
+}
+
+.iso-button{
+background:#7c3aed;
+color:white;
+padding:15px 12px;
+font-weight:600;
+cursor:pointer;
+border-radius:8px 0 0 8px;
+writing-mode:vertical-rl;
+text-orientation:mixed;
+}
+
+.iso-panel{
+width:0;
+overflow:hidden;
+background:white;
+transition:width 0.4s ease;
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.iso-panel img{
+width:100%;
+height:auto;
+max-width:300px;
+margin:20px;
+}
+
+.iso-panel.open{
+width:340px;
+}
+
+/* ================= RESET ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#ffffff;
+color:#0f172a;
+overflow-x:hidden;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+position:fixed;
+width:100%;
+height:75px;
+padding:0 80px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+background:rgba(15,23,42,0.95);
+z-index:1000;
+}
+
+.logo{
+height:48px;
+}
+
+.navbar ul{
+list-style:none;
+display:flex;
+gap:35px;
+}
+
+.navbar a{
+text-decoration:none;
+color:white;
+font-size:15px;
+font-weight:500;
+transition:0.3s;
+}
+
+.navbar a:hover{
+color:#a78bfa;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+padding:170px 80px 140px;
+background:linear-gradient(180deg,#ffffff 0%,#f4f6ff 100%);
+}
+
+.hero-container{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:90px;
+}
+
+.hero-text{
+flex:1;
+}
+
+.hero-badge{
+font-size:13px;
+font-weight:600;
+letter-spacing:1px;
+text-transform:uppercase;
+color:#7c3aed;
+margin-bottom:20px;
+display:inline-block;
+}
+
+.hero-text h1{
+font-size:54px;
+font-weight:700;
+line-height:1.1;
+margin-bottom:25px;
+letter-spacing:-1px;
+}
+
+.hero-text p{
+font-size:20px;
+color:#475569;
+margin-bottom:35px;
+}
+
+.hero-stats{
+display:flex;
+gap:30px;
+font-size:14px;
+color:#64748b;
+}
+
+.hero-stats span{
+font-weight:600;
+color:#0f172a;
+}
+
+.hero-visual img{
+width:280px;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+padding:120px 80px;
+text-align:center;
+}
+
+.section h2{
+font-size:40px;
+margin-bottom:60px;
+}
+
+/* ================= GRID ================= */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+background:#0f172a;
+color:white;
+padding:50px 40px;
+border-radius:18px;
+transition:0.4s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 25px 50px rgba(0,0,0,0.3);
+}
+
+.card p{
+font-size:14px;
+color:#cbd5f5;
+margin-top:10px;
+line-height:1.5;
+}
+
+/* ================= WHY ================= */
+
+.why{
+background:#f8fafc;
+}
+
+.why-card{
+background:white;
+padding:40px 35px;
+border-radius:16px;
+border:1px solid rgba(0,0,0,0.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.why-icon{
+font-size:32px;
+margin-bottom:15px;
+}
+
+/* ================= METRICS ================= */
+
+.metrics{
+background:#eef2ff;
+}
+
+.metric-number{
+font-size:48px;
+font-weight:700;
+color:#7c3aed;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+background:#7c3aed;
+color:white;
+padding:110px 40px;
+text-align:center;
+}
+
+.cta button{
+background:white;
+color:#7c3aed;
+padding:15px 45px;
+border:none;
+border-radius:10px;
+font-weight:600;
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+padding:30px 50px;
+font-size:14px;
+background:white;
+border-top:1px solid rgba(0,0,0,0.05);
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ISO -->
+
+<div class="iso-tab">
+
+<div class="iso-button" onclick="toggleISO()">
+ISO 9001
+</div>
+
+<div class="iso-panel" id="isoPanel">
+<img src="assets/images/ISO.jpg">
+</div>
+
+</div>
+
+<script>
+
+function toggleISO(){
+const panel = document.getElementById("isoPanel");
+panel.classList.toggle("open");
+}
+
+</script>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<img src="assets/images/logo.png" class="logo">
+
+<nav>
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="Nosotros.html">Nosotros</a></li>
+<li><a href="#">Servicios</a></li>
+<li><a href="#">Contacto</a></li>
+</ul>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-container">
+
+<div class="hero-text">
+
+<span class="hero-badge">GRUPO MAS</span>
+
+<h1>Más de 15 años impulsando la transformación tecnológica</h1>
+
+<p>
+Grupo MAS acompaña a empresas en su evolución digital mediante
+soluciones tecnológicas empresariales, integración de sistemas
+y plataformas de gestión inteligente.
+</p>
+
+<div class="hero-stats">
+<div><span>250+</span> Clientes</div>
+<div><span>15+</span> Años</div>
+<div><span>4</span> Países</div>
+</div>
+
+</div>
+
+<div class="hero-visual">
+<img src="">
+</div>
+
+</div>
+
+</section>
+
+<!-- HISTORIA -->
+
+<section class="section">
+
+<h2>Nuestra Historia</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Nuestros inicios</h3>
+
+<p>
+Grupo MAS nace con el objetivo de ayudar a las empresas a
+modernizar su gestión mediante soluciones tecnológicas
+capaces de integrar procesos, datos y sistemas.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Crecimiento</h3>
+
+<p>
+A lo largo de los años expandimos nuestras soluciones
+incorporando ERP, automatización empresarial,
+arquitectura cloud e inteligencia de negocios.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Presente</h3>
+
+<p>
+Hoy acompañamos a organizaciones en diferentes países
+ayudándolas a optimizar su operación mediante tecnología.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FILOSOFIA -->
+
+<section class="section why">
+
+<h2>Nuestra Filosofía</h2>
+
+<div class="grid">
+
+<div class="why-card">
+<div class="why-icon">🎯</div>
+<h3>Misión</h3>
+<p>
+Impulsar la transformación digital de las organizaciones
+mediante soluciones tecnológicas innovadoras y eficientes.
+</p>
+</div>
+
+<div class="why-card">
+<div class="why-icon">🚀</div>
+<h3>Visión</h3>
+<p>
+Ser un socio tecnológico estratégico para empresas que
+buscan optimizar su operación y crecer.
+</p>
+</div>
+
+<div class="why-card">
+<div class="why-icon">🤝</div>
+<h3>Valores</h3>
+<p>
+Innovación, compromiso, excelencia y relaciones de largo
+plazo con nuestros clientes.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- METRICAS -->
+
+<section class="section metrics">
+
+<h2>Nuestra Experiencia</h2>
+
+<div class="grid">
+
+<div>
+<div class="metric-number">250+</div>
+Clientes
+</div>
+
+<div>
+<div class="metric-number">15+</div>
+Años
+</div>
+
+<div>
+<div class="metric-number">4</div>
+Países
+</div>
+
+<div>
+<div class="metric-number">100+</div>
+Proyectos
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>Trabajemos juntos</h2>
+
+<p style="margin-top:15px;margin-bottom:30px">
+Descubra cómo la tecnología puede impulsar el crecimiento
+de su empresa.
+</p>
+
+<button>Contactar a Grupo MAS</button>
+
+</section>
+
+<footer class="footer">
+
+© 2026 Grupo MAS - Todos los derechos reservados.
+
+</footer>
+
+</body>
+</html>

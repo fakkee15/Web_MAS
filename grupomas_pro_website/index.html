@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo MAS | Tecnología Empresarial</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+	
+	/* ================= ISO LATERAL ================= */
+
+.iso-tab{
+position:fixed;
+right:0;
+top:50%;
+transform:translateY(-50%);
+z-index:9999;
+display:flex;
+align-items:center;
+}
+
+.iso-button{
+background:#7c3aed;
+color:white;
+padding:15px 12px;
+font-weight:600;
+cursor:pointer;
+border-radius:8px 0 0 8px;
+writing-mode:vertical-rl;
+text-orientation:mixed;
+}
+
+.iso-panel{
+width:0;
+overflow:hidden;
+background:white;
+transition:width 0.4s ease;
+box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.iso-panel img{
+width:100%;
+height:auto;
+max-width:300px;
+margin:20px;
+}
+
+.iso-panel.open{
+width:340px;
+}
+
+/* ================= RESET ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#ffffff;
+    color:#0f172a;
+    overflow-x:hidden;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+    position:fixed;
+    width:100%;
+    height:75px;
+    padding:0 80px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(15,23,42,0.95);
+    z-index:1000;
+}
+
+.logo{
+    height:48px;
+}
+
+.navbar ul{
+    list-style:none;
+    display:flex;
+    gap:35px;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:white;
+    font-size:15px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.navbar a:hover{
+    color:#a78bfa;
+}
+
+/* ================= HERO ================= */
+.hero{
+    padding:170px 80px 140px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 75% 35%, rgba(124,58,237,0.15) 0%, transparent 45%),
+        linear-gradient(180deg,#ffffff 0%,#f4f6ff 100%);
+}
+
+/* halo grande decorativo */
+.hero::before{
+    content:"";
+    position:absolute;
+    width:1100px;
+    height:1100px;
+    background:radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+    top:-350px;
+    right:-350px;
+    z-index:0;
+}
+
+/* línea inferior elegante */
+.hero::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+}
+
+.hero-container{
+    position:relative;
+    z-index:1;
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:90px;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.hero-badge{
+    display:inline-block;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:#7c3aed;
+    margin-bottom:20px;
+}
+
+
+	
+.hero-text h1{
+    font-size:54px;
+    font-weight:700;
+    line-height:1.1;
+    margin-bottom:25px;
+    letter-spacing:-1px;
+    background:linear-gradient(90deg,#0f172a,#1e3a8a);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+    font-size:20px;
+    color:#475569;
+    margin-bottom:35px;
+}
+
+.hero-stats{
+    display:flex;
+    gap:30px;
+    margin-bottom:40px;
+    font-size:14px;
+    color:#64748b;
+}
+
+.hero-stats span{
+    font-weight:600;
+    color:#0f172a;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+}
+
+.btn-primary{
+    background:#7c3aed;
+    color:white;
+    padding:14px 30px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s ease;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(124,58,237,0.4);
+}
+
+.btn-secondary{
+    border:2px solid #7c3aed;
+    color:#7c3aed;
+    padding:12px 28px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s ease;
+}
+
+.btn-secondary:hover{
+    background:#7c3aed;
+    color:white;
+}
+/* ================= AI VISUAL ================= */
+.hero-visual{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#aiCanvas{
+    width:420px;
+    height:420px;
+    filter: drop-shadow(0 40px 60px rgba(124,58,237,0.35));
+}
+/* ================= SECTION ================= */
+
+.section{
+    padding:120px 80px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+#bgNetwork{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:0;
+opacity:0.25;
+}
+
+.section h2,
+.grid{
+position:relative;
+z-index:2;
+}
+
+.section h2{
+    font-size:40px;
+    margin-bottom:60px;
+}
+
+/* ================= GRID ================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+}
+
+.card{
+    background:#0f172a;
+    color:white;
+    padding:50px 40px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.06);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 25px 50px rgba(0,0,0,0.3);
+}
+
+.icon{
+    height:70px;
+    margin-bottom:25px;
+}
+	
+	.tag{
+    display:inline-block;
+    font-size:11px;
+    letter-spacing:1px;
+    background:#7c3aed;
+    padding:4px 10px;
+    border-radius:6px;
+    margin-bottom:15px;
+    font-weight:600;
+}
+
+.card p{
+    font-size:14px;
+    color:#cbd5f5;
+    margin-top:10px;
+    line-height:1.5;
+}
+	/* ================= WHY SECTION ================= */
+
+.why{
+background:#f8fafc;
+}
+
+.why-card{
+background:white;
+padding:40px 35px;
+border-radius:16px;
+border:1px solid rgba(0,0,0,0.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.why-card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.why-icon{
+font-size:32px;
+margin-bottom:15px;
+}
+
+/* ================= METRICS ================= */
+.metrics{
+    background:#eef2ff;
+}
+
+.metric-number{
+    font-size:48px;
+    font-weight:700;
+    color:#7c3aed;
+}
+
+/* ================= SUCURSALES ================= */
+.branches{
+    background:#f8fafc;
+}
+
+.branch{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    border:1px solid rgba(0,0,0,0.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.branch img{
+    width:45px;
+    margin-bottom:15px;
+}
+
+/* ================= CTA ================= */
+.cta{
+    background:#7c3aed;
+    color:white;
+    padding:110px 40px;
+    text-align:center;
+}
+
+.cta button{
+    background:white;
+    color:#7c3aed;
+    padding:15px 45px;
+    border:none;
+    border-radius:10px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.cta button:hover{
+    transform:translateY(-3px);
+}
+
+/* ================= FOOTER ================= */
+.footer{
+    position:relative;
+    padding:30px 50px;
+    font-size:14px;
+    background:white;
+    border-top:1px solid rgba(0,0,0,0.05);
+    text-align:center;
+}
+
+.footer img{
+    position:absolute;
+    right:40px;
+    top:50%;
+    transform:translateY(-50%);
+    height:100px;
+}
+</style>
+</head>
+	
+		<!-- ================= ISO ================= -->	
+	
+<div class="iso-tab">
+
+<div class="iso-button" onclick="toggleISO()">
+ISO 9001
+</div>
+
+<div class="iso-panel" id="isoPanel">
+<img src="assets/images/ISO.jpg">
+</div>
+
+</div>
+
+	<script>
+
+function toggleISO(){
+
+const panel = document.getElementById("isoPanel");
+
+panel.classList.toggle("open");
+
+}
+
+</script>
+	
+<body>
+
+<header class="navbar">
+    <img src="assets/images/logo.png" class="logo">
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+	
+
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-text">
+            <h1>Tecnología Inteligente para Empresas que Crecen</h1>
+            <p>ERP · Cloud · Automatización · Inteligencia Empresarial</p>
+			<div class="hero-stats">
+    <div><span>250+</span> Clientes</div>
+    <div><span>15+</span> Años</div>
+    <div><span>4</span> Países</div>
+</div>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">Explorar Soluciones</a>
+                <a href="#" class="btn-secondary">Solicitar Consulta</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <canvas id="aiCanvas"></canvas>
+        </div>
+    </div>
+</section>
+	
+
+
+<section class="section">
+
+<canvas id="bgNetwork"></canvas>
+   
+	<h2>Nuestras Soluciones</h2>
+    <div class="grid">
+
+        <div class="card">
+            <span class="tag">FINANZAS</span>
+            <img src="assets/icons/mas_account.png" class="icon">
+            <h3>MAS Account</h3>
+            <p>Optimiza procesos empresariales, controla tus finanzas y toma decisiones inteligentes.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">LABORATORIOS</span>
+            <img src="assets/icons/mas_labs.png" class="icon">
+            <h3>MAS Labs</h3>
+            <p>Gestión de información de laboratorio conforme a la norma ISO 17025.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">ERP</span>
+            <img src="assets/icons/erp.png" class="icon">
+            <h3>Dynamics 365</h3>
+            <p>ERP de Microsoft para controlar finanzas, operaciones y cadena de suministro.</p>
+        </div>
+
+        <div class="card">
+            <span class="tag">CLOUD</span>
+            <img src="assets/icons/cloud.png" class="icon">
+            <h3>Cloud & Mobile</h3>
+            <p>Infraestructura cloud y aplicaciones móviles para empresas modernas.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section why">
+
+<h2>Por qué elegir Grupo MAS</h2>
+
+<div class="grid">
+
+<div class="why-card">
+<div class="why-icon">⚡</div>
+<h3>Implementación Ágil</h3>
+<p>
+Implementamos soluciones tecnológicas de forma rápida y eficiente,
+adaptadas a los procesos reales de su empresa.
+</p>
+</div>
+
+<div class="why-card">
+<div class="why-icon">🔗</div>
+<h3>Integración de Sistemas</h3>
+<p>
+Conectamos ERP, aplicaciones y plataformas para lograr
+un flujo de información automatizado.
+</p>
+</div>
+
+<div class="why-card">
+<div class="why-icon">📊</div>
+<h3>Decisiones basadas en datos</h3>
+<p>
+Transformamos la información empresarial en indicadores
+estratégicos para la toma de decisiones.
+</p>
+</div>
+
+<div class="why-card">
+<div class="why-icon">🛠</div>
+<h3>Soporte Especializado</h3>
+<p>
+Acompañamos a nuestros clientes con soporte técnico
+y mejora continua de sus soluciones.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+    <h2>¿Listo para transformar tu empresa?</h2>
+    <button>Solicitar Consulta Estratégica</button>
+</section>
+
+<footer class="footer">
+© 2026 Grupo MAS - Todos los derechos reservados.
+
+</footer>
+
+	
+
+	
+	<script>
+
+const canvas = document.getElementById("aiCanvas");
+const ctx = canvas.getContext("2d");
+
+/* ===== CANVAS HI-RESOLUTION ===== */
+
+const scale = window.devicePixelRatio;
+
+canvas.width = canvas.offsetWidth * scale;
+canvas.height = canvas.offsetHeight * scale;
+
+ctx.scale(scale,scale);
+
+const centerX = canvas.offsetWidth/2;
+const centerY = canvas.offsetHeight/2;
+
+let mouseX = centerX;
+let mouseY = centerY;
+
+canvas.addEventListener("mousemove",(e)=>{
+
+const rect = canvas.getBoundingClientRect();
+
+mouseX = e.clientX - rect.left;
+mouseY = e.clientY - rect.top;
+
+});
+
+
+/* ================= IMAGEN CENTRAL ================= */
+
+const dashboard = new Image();
+dashboard.src = "assets/images/mas.logo.png";
+
+
+/* ================= NODOS ================= */
+
+const nodes = [];
+const NODE_COUNT = 60;
+
+for(let i=0;i<NODE_COUNT;i++){
+
+nodes.push({
+
+angle:Math.random()*Math.PI*2,
+radius:180 + Math.random()*70,
+speed:0.002 + Math.random()*0.003,
+size:2 + Math.random()*2
+
+});
+
+}
+
+
+/* ================= PALABRAS ================= */
+
+const words = [
+"IA",
+"DATA",
+"APPS",
+"AUTOMATION",
+"ANALYTICS"
+];
+
+let wordRotation = 0;
+
+
+/* ================= ONDAS ================= */
+
+function drawWaves(){
+
+for(let i=1;i<5;i++){
+
+ctx.beginPath();
+
+ctx.arc(
+centerX,
+centerY,
+260 + i*30,
+0,
+Math.PI*2
+);
+
+ctx.strokeStyle = "rgba(30,58,138,0.08)";
+ctx.lineWidth = 2;
+
+ctx.stroke();
+
+}
+
+}
+
+
+/* ================= ANILLO IA ================= */
+
+function drawRing(){
+
+const radius = 160;
+const thickness = 40;
+
+ctx.lineWidth = thickness;
+
+const segments = 3;
+
+for(let i=0;i<segments;i++){
+
+const start =
+wordRotation +
+(i*(Math.PI*2/segments));
+
+const end =
+start + Math.PI/2;
+
+const gradient =
+ctx.createLinearGradient(
+centerX-radius,
+centerY-radius,
+centerX+radius,
+centerY+radius
+);
+
+gradient.addColorStop(0,"#7c3aed");
+gradient.addColorStop(0.5,"#3b82f6");
+gradient.addColorStop(1,"#06b6d4");
+
+ctx.strokeStyle = gradient;
+
+ctx.beginPath();
+
+ctx.arc(
+centerX,
+centerY,
+radius,
+start,
+end
+);
+
+ctx.stroke();
+
+}
+
+}
+
+
+/* ================= TEXTO ORBITANDO ================= */
+
+function drawWords(){
+
+const radius = 210;
+
+ctx.font = "16px sans-serif";
+ctx.fillStyle = "#0f172a";
+ctx.textAlign = "center";
+
+words.forEach((word,i)=>{
+
+const angle =
+wordRotation +
+(i*(Math.PI*2/words.length));
+
+const x =
+centerX + Math.cos(angle)*radius;
+
+const y =
+centerY + Math.sin(angle)*radius;
+
+ctx.fillText(word,x,y);
+
+});
+
+}
+
+
+/* ================= NODOS ================= */
+
+function drawNodes(){
+
+nodes.forEach(node=>{
+
+node.angle += node.speed;
+
+const x =
+centerX +
+Math.cos(node.angle)*node.radius;
+
+const y =
+centerY +
+Math.sin(node.angle)*node.radius;
+
+
+/* línea núcleo */
+
+ctx.beginPath();
+ctx.moveTo(centerX,centerY);
+ctx.lineTo(x,y);
+
+ctx.strokeStyle = "rgba(124,58,237,0.10)";
+ctx.lineWidth = 1;
+
+ctx.stroke();
+
+
+/* interacción mouse */
+
+const dx = x-mouseX;
+const dy = y-mouseY;
+
+const dist = Math.sqrt(dx*dx + dy*dy);
+
+if(dist < 60){
+
+ctx.beginPath();
+ctx.moveTo(mouseX,mouseY);
+ctx.lineTo(x,y);
+
+ctx.strokeStyle = "rgba(59,130,246,0.15)";
+ctx.lineWidth = 1;
+
+ctx.stroke();
+
+}
+
+
+/* nodo */
+
+ctx.beginPath();
+ctx.arc(x,y,node.size,0,Math.PI*2);
+
+ctx.fillStyle = "#1e3a8a";
+
+ctx.fill();
+
+});
+
+}
+
+
+/* ================= IMAGEN CENTRAL ================= */
+
+function drawCore(){
+
+const imgSize =
+Math.min(canvas.offsetWidth,canvas.offsetHeight) * 0.70;
+
+const ratio =
+dashboard.width / dashboard.height;
+
+let drawWidth = imgSize;
+let drawHeight = imgSize;
+
+if(ratio > 1){
+
+drawHeight = imgSize / ratio;
+
+}else{
+
+drawWidth = imgSize * ratio;
+
+}
+
+ctx.drawImage(
+
+dashboard,
+
+centerX - drawWidth/2,
+centerY - drawHeight/2,
+
+drawWidth,
+drawHeight
+
+);
+
+}
+
+
+/* ================= DIFUMINADO BORDE ================= */
+
+function fadeEdges(){
+
+const gradient = ctx.createRadialGradient(
+centerX,
+centerY,
+canvas.offsetHeight*0.4,
+centerX,
+centerY,
+canvas.offsetHeight*0.55
+);
+
+gradient.addColorStop(0,"rgba(0,0,0,0)");
+gradient.addColorStop(1,"rgba(255,255,255,1)");
+
+ctx.globalCompositeOperation = "destination-out";
+
+ctx.fillStyle = gradient;
+
+ctx.beginPath();
+ctx.arc(centerX,centerY,canvas.offsetHeight,0,Math.PI*2);
+ctx.fill();
+
+ctx.globalCompositeOperation = "source-over";
+
+}
+
+
+/* ================= ANIMACION ================= */
+
+function animate(){
+
+ctx.clearRect(
+0,
+0,
+canvas.offsetWidth,
+canvas.offsetHeight
+);
+
+drawWaves();
+
+drawRing();
+
+drawNodes();
+
+drawWords();
+
+drawCore();
+
+fadeEdges();
+
+wordRotation += 0.002;
+
+requestAnimationFrame(animate);
+
+}
+
+
+dashboard.onload = function(){
+
+animate();
+
+};
+
+</script>
+	
+	
+
+	
+
+<script>
+
+/* script del fondo */
+
+const bgCanvas = document.getElementById("bgNetwork");
+const bgCtx = bgCanvas.getContext("2d");
+
+function resizeBG(){
+bgCanvas.width = bgCanvas.offsetWidth;
+bgCanvas.height = bgCanvas.offsetHeight;
+}
+
+resizeBG();
+window.addEventListener("resize",resizeBG);
+
+const particles = [];
+const COUNT = 60;
+
+for(let i=0;i<COUNT;i++){
+
+particles.push({
+x:Math.random()*bgCanvas.width,
+y:Math.random()*bgCanvas.height,
+vx:(Math.random()-0.5)*0.4,
+vy:(Math.random()-0.5)*0.4
+});
+
+}
+
+function animateBG(){
+
+bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
+
+particles.forEach(p=>{
+
+p.x += p.vx;
+p.y += p.vy;
+
+if(p.x<0||p.x>bgCanvas.width) p.vx*=-1;
+if(p.y<0||p.y>bgCanvas.height) p.vy*=-1;
+
+bgCtx.beginPath();
+bgCtx.arc(p.x,p.y,2,0,Math.PI*2);
+bgCtx.fillStyle="#7c3aed";
+bgCtx.fill();
+
+particles.forEach(p2=>{
+
+const dx=p.x-p2.x;
+const dy=p.y-p2.y;
+const dist=Math.sqrt(dx*dx+dy*dy);
+
+if(dist<120){
+
+bgCtx.beginPath();
+bgCtx.moveTo(p.x,p.y);
+bgCtx.lineTo(p2.x,p2.y);
+bgCtx.strokeStyle="rgba(124,58,237,0.08)";
+bgCtx.stroke();
+
+}
+
+});
+
+});
+
+requestAnimationFrame(animateBG);
+
+}
+
+animateBG();
+
+</script>
+
+</body>
+
+</html>
