@@ -8,9 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-	
-	/* ================= ISO LATERAL ================= */
-
+/* ================= ISO LATERAL ================= */
 .iso-tab{
 position:fixed;
 right:0;
@@ -56,201 +54,300 @@ width:340px;
 
 /* ================= RESET ================= */
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
 body{
-    background:#ffffff;
-    color:#0f172a;
-    overflow-x:hidden;
+background:#ffffff;
+color:#0f172a;
+overflow-x:hidden;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
+}
+
+a{
+text-decoration:none;
+color:inherit;
 }
 
 /* ================= NAVBAR ================= */
 .navbar{
-    position:fixed;
-    width:100%;
-    height:75px;
-    padding:0 80px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    background:rgba(15,23,42,0.95);
-    z-index:1000;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:78px;
+display:flex;
+align-items:center;
+z-index:1000;
+background:rgba(15,23,42,0.95);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.navbar-inner{
+width:min(1200px, calc(100% - 40px));
+margin:0 auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo-link{
+display:flex;
+align-items:center;
+flex-shrink:0;
 }
 
 .logo{
-    height:48px;
+height:46px;
+width:auto;
+max-height:46px;
+object-fit:contain;
+display:block;
 }
 
-.navbar ul{
-    list-style:none;
-    display:flex;
-    gap:35px;
+.nav-links{
+list-style:none;
+display:flex;
+align-items:center;
+gap:22px;
 }
 
-.navbar a{
-    text-decoration:none;
-    color:white;
-    font-size:15px;
-    font-weight:500;
-    transition:0.3s;
+.nav-links > li{
+position:relative;
 }
 
-.navbar a:hover{
-    color:#a78bfa;
+.nav-links a{
+color:#fff;
+font-size:15px;
+font-weight:500;
+transition:0.3s;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+color:#a78bfa;
+}
+
+.arrow{
+font-size:12px;
+}
+
+.nav-cta{
+padding:10px 16px;
+background:#7c3aed;
+border-radius:10px;
+font-weight:700;
+}
+
+.nav-cta:hover{
+background:#6d28d9;
+color:#fff !important;
+}
+
+.has-dropdown .dropdown-menu{
+position:absolute;
+top:calc(100% + 14px);
+left:0;
+min-width:220px;
+background:#ffffff;
+border:1px solid rgba(15,23,42,0.08);
+border-radius:16px;
+box-shadow:0 20px 40px rgba(15,23,42,0.12);
+padding:10px 0;
+list-style:none;
+opacity:0;
+visibility:hidden;
+transform:translateY(8px);
+transition:all 0.25s ease;
+z-index:1001;
+}
+
+.has-dropdown:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.dropdown-menu li{
+width:100%;
+}
+
+.dropdown-menu a{
+color:#0f172a;
+padding:11px 16px;
+display:block;
+font-size:14px;
+font-weight:500;
+}
+
+.dropdown-menu a:hover{
+background:#f8fafc;
+color:#7c3aed;
+}
+
+.nav-toggle{
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:28px;
+cursor:pointer;
 }
 
 /* ================= HERO ================= */
 .hero{
-    padding:170px 80px 140px;
-    position:relative;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 75% 35%, rgba(124,58,237,0.15) 0%, transparent 45%),
-        linear-gradient(180deg,#ffffff 0%,#f4f6ff 100%);
+padding:170px 80px 140px;
+position:relative;
+overflow:hidden;
+background:
+radial-gradient(circle at 75% 35%, rgba(124,58,237,0.15) 0%, transparent 45%),
+linear-gradient(180deg,#ffffff 0%,#f4f6ff 100%);
 }
 
 /* halo grande decorativo */
 .hero::before{
-    content:"";
-    position:absolute;
-    width:1100px;
-    height:1100px;
-    background:radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
-    top:-350px;
-    right:-350px;
-    z-index:0;
+content:"";
+position:absolute;
+width:1100px;
+height:1100px;
+background:radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+top:-350px;
+right:-350px;
+z-index:0;
 }
 
 /* línea inferior elegante */
 .hero::after{
-    content:"";
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:1px;
-    background:linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+content:"";
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:1px;
+background:linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
 }
 
 .hero-container{
-    position:relative;
-    z-index:1;
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:90px;
+position:relative;
+z-index:1;
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:90px;
 }
 
 .hero-text{
-    flex:1;
+flex:1;
 }
 
 .hero-badge{
-    display:inline-block;
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    color:#7c3aed;
-    margin-bottom:20px;
+display:inline-block;
+font-size:13px;
+font-weight:600;
+letter-spacing:1px;
+text-transform:uppercase;
+color:#7c3aed;
+margin-bottom:20px;
 }
 
-
-	
 .hero-text h1{
-    font-size:54px;
-    font-weight:700;
-    line-height:1.1;
-    margin-bottom:25px;
-    letter-spacing:-1px;
-    background:linear-gradient(90deg,#0f172a,#1e3a8a);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+font-size:54px;
+font-weight:700;
+line-height:1.1;
+margin-bottom:25px;
+letter-spacing:-1px;
+background:linear-gradient(90deg,#0f172a,#1e3a8a);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .hero-text p{
-    font-size:20px;
-    color:#475569;
-    margin-bottom:35px;
+font-size:20px;
+color:#475569;
+margin-bottom:35px;
 }
 
 .hero-stats{
-    display:flex;
-    gap:30px;
-    margin-bottom:40px;
-    font-size:14px;
-    color:#64748b;
+display:flex;
+gap:30px;
+margin-bottom:40px;
+font-size:14px;
+color:#64748b;
 }
 
 .hero-stats span{
-    font-weight:600;
-    color:#0f172a;
+font-weight:600;
+color:#0f172a;
 }
 
 .hero-buttons{
-    display:flex;
-    gap:20px;
+display:flex;
+gap:20px;
 }
 
 .btn-primary{
-    background:#7c3aed;
-    color:white;
-    padding:14px 30px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.3s ease;
+background:#7c3aed;
+color:white;
+padding:14px 30px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s ease;
 }
 
 .btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 30px rgba(124,58,237,0.4);
+transform:translateY(-3px);
+box-shadow:0 15px 30px rgba(124,58,237,0.4);
 }
 
 .btn-secondary{
-    border:2px solid #7c3aed;
-    color:#7c3aed;
-    padding:12px 28px;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.3s ease;
+border:2px solid #7c3aed;
+color:#7c3aed;
+padding:12px 28px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s ease;
 }
 
 .btn-secondary:hover{
-    background:#7c3aed;
-    color:white;
+background:#7c3aed;
+color:white;
 }
+
 /* ================= AI VISUAL ================= */
 .hero-visual{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 #aiCanvas{
-    width:420px;
-    height:420px;
-    filter: drop-shadow(0 40px 60px rgba(124,58,237,0.35));
+width:420px;
+height:420px;
+filter:drop-shadow(0 40px 60px rgba(124,58,237,0.35));
 }
-/* ================= SECTION ================= */
 
+/* ================= SECTION ================= */
 .section{
-    padding:120px 80px;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
+padding:120px 80px;
+text-align:center;
+position:relative;
+overflow:hidden;
 }
 
 #bgNetwork{
@@ -270,55 +367,55 @@ z-index:2;
 }
 
 .section h2{
-    font-size:40px;
-    margin-bottom:60px;
+font-size:40px;
+margin-bottom:60px;
 }
 
 /* ================= GRID ================= */
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
 }
 
 .card{
-    background:#0f172a;
-    color:white;
-    padding:50px 40px;
-    border-radius:18px;
-    border:1px solid rgba(255,255,255,0.06);
-    transition:0.4s;
+background:#0f172a;
+color:white;
+padding:50px 40px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.06);
+transition:0.4s;
 }
 
 .card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 25px 50px rgba(0,0,0,0.3);
+transform:translateY(-8px);
+box-shadow:0 25px 50px rgba(0,0,0,0.3);
 }
 
 .icon{
-    height:70px;
-    margin-bottom:25px;
+height:70px;
+margin-bottom:25px;
 }
-	
-	.tag{
-    display:inline-block;
-    font-size:11px;
-    letter-spacing:1px;
-    background:#7c3aed;
-    padding:4px 10px;
-    border-radius:6px;
-    margin-bottom:15px;
-    font-weight:600;
+
+.tag{
+display:inline-block;
+font-size:11px;
+letter-spacing:1px;
+background:#7c3aed;
+padding:4px 10px;
+border-radius:6px;
+margin-bottom:15px;
+font-weight:600;
 }
 
 .card p{
-    font-size:14px;
-    color:#cbd5f5;
-    margin-top:10px;
-    line-height:1.5;
+font-size:14px;
+color:#cbd5f5;
+margin-top:10px;
+line-height:1.5;
 }
-	/* ================= WHY SECTION ================= */
 
+/* ================= WHY SECTION ================= */
 .why{
 background:#f8fafc;
 }
@@ -344,249 +441,397 @@ margin-bottom:15px;
 
 /* ================= METRICS ================= */
 .metrics{
-    background:#eef2ff;
+background:#eef2ff;
 }
 
 .metric-number{
-    font-size:48px;
-    font-weight:700;
-    color:#7c3aed;
+font-size:48px;
+font-weight:700;
+color:#7c3aed;
 }
 
 /* ================= SUCURSALES ================= */
 .branches{
-    background:#f8fafc;
+background:#f8fafc;
 }
 
 .branch{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    border:1px solid rgba(0,0,0,0.05);
-    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+background:white;
+padding:30px;
+border-radius:15px;
+border:1px solid rgba(0,0,0,0.05);
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
 .branch img{
-    width:45px;
-    margin-bottom:15px;
+width:45px;
+margin-bottom:15px;
 }
 
 /* ================= CTA ================= */
 .cta{
-    background:#7c3aed;
-    color:white;
-    padding:110px 40px;
-    text-align:center;
+background:#7c3aed;
+color:white;
+padding:110px 40px;
+text-align:center;
 }
 
 .cta button{
-    background:white;
-    color:#7c3aed;
-    padding:15px 45px;
-    border:none;
-    border-radius:10px;
-    font-weight:600;
-    transition:0.3s;
+background:white;
+color:#7c3aed;
+padding:15px 45px;
+border:none;
+border-radius:10px;
+font-weight:600;
+transition:0.3s;
+cursor:pointer;
 }
 
 .cta button:hover{
-    transform:translateY(-3px);
+transform:translateY(-3px);
 }
 
 /* ================= FOOTER ================= */
 .footer{
-    position:relative;
-    padding:30px 50px;
-    font-size:14px;
-    background:white;
-    border-top:1px solid rgba(0,0,0,0.05);
-    text-align:center;
+position:relative;
+padding:30px 50px;
+font-size:14px;
+background:white;
+border-top:1px solid rgba(0,0,0,0.05);
+text-align:center;
 }
 
 .footer img{
-    position:absolute;
-    right:40px;
-    top:50%;
-    transform:translateY(-50%);
-    height:100px;
+position:absolute;
+right:40px;
+top:50%;
+transform:translateY(-50%);
+height:100px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1080px){
+.hero-container{
+flex-direction:column;
+text-align:center;
+gap:50px;
+}
+
+.hero-stats{
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.hero-buttons{
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.footer img{
+display:none;
+}
+}
+
+@media (max-width: 900px){
+.nav-toggle{
+display:block;
+}
+
+.nav-links{
+position:absolute;
+top:78px;
+left:0;
+width:100%;
+background:rgba(15,23,42,0.98);
+flex-direction:column;
+align-items:flex-start;
+padding:22px 20px;
+display:none;
+gap:14px;
+}
+
+.nav-links.show{
+display:flex;
+}
+
+.nav-links > li{
+width:100%;
+}
+
+.nav-links > li > a{
+width:100%;
+justify-content:space-between;
+}
+
+.has-dropdown .dropdown-menu{
+position:static;
+opacity:1;
+visibility:visible;
+transform:none;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:none;
+margin-top:10px;
+display:none;
+width:100%;
+}
+
+.has-dropdown.open .dropdown-menu{
+display:block;
+}
+
+.dropdown-menu a{
+color:#e2e8f0;
+}
+
+.dropdown-menu a:hover{
+background:rgba(255,255,255,0.06);
+color:#c4b5fd;
+}
+}
+
+@media (max-width: 820px){
+.hero{
+padding:145px 24px 90px;
+}
+
+.section{
+padding:90px 24px;
+}
+
+.hero-text h1{
+font-size:40px;
+}
+
+.hero-text p{
+font-size:18px;
+}
+
+.section h2{
+font-size:32px;
+}
+
+#aiCanvas{
+width:320px;
+height:320px;
+}
+
+.iso-tab{
+display:none;
+}
+}
+
+@media (max-width: 520px){
+.hero-text h1{
+font-size:32px;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.hero-stats{
+flex-direction:column;
+gap:12px;
+}
 }
 </style>
 </head>
-	
-		<!-- ================= ISO ================= -->	
-	
-<div class="iso-tab">
 
-<div class="iso-button" onclick="toggleISO()">
-ISO 9001
-</div>
-
-<div class="iso-panel" id="isoPanel">
-<img src="assets/images/ISO.jpg">
-</div>
-
-</div>
-
-	<script>
-
-function toggleISO(){
-
-const panel = document.getElementById("isoPanel");
-
-panel.classList.toggle("open");
-
-}
-
-</script>
-	
 <body>
 
+<!-- ================= ISO ================= -->
+<div class="iso-tab">
+  <div class="iso-button" onclick="toggleISO()">ISO 9001</div>
+  <div class="iso-panel" id="isoPanel">
+    <img src="assets/images/ISO.jpg" alt="ISO 9001">
+  </div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
 <header class="navbar">
-    <img src="assets/images/logo.png" class="logo">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo-link">
+      <img src="assets/images/logo.png" class="logo" alt="Grupo MAS">
+    </a>
+
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+
     <nav>
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Contacto</a></li>
-        </ul>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="Nosotros.html">Nosotros</a></li>
+
+        <li class="has-dropdown">
+          <a href="servicios.html">Servicios <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="servicios.html#adaptacion">Adaptación / Localización</a></li>
+            <li><a href="servicios.html#desarrollo">Desarrollo</a></li>
+            <li><a href="servicios.html#consultoria">Consultoría Funcional</a></li>
+            <li><a href="servicios.html#arca">Servicios ARCA</a></li>
+            <li><a href="servicios.html#movil">Desarrollo Móvil</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="#">Soluciones <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://www.masaccount.com.ar/" target="_blank">Mas Account</a></li>
+            <li><a href="https://www.maslabs.com.ar/" target="_blank">Mas Labs</a></li>
+            <li><a href="https://www.microsoft.com/es-es/dynamics-365/products/business-central">Business Central</a></li>
+          </ul>
+        </li>
+
+        <li><a href="contacto.html">Contacto</a></li>
+        
+        
+      </ul>
     </nav>
+  </div>
 </header>
 
-	
-
 <section class="hero">
-    <div class="hero-container">
-        <div class="hero-text">
-            <h1>Tecnología Inteligente para Empresas que Crecen</h1>
-            <p>ERP · Cloud · Automatización · Inteligencia Empresarial</p>
-			<div class="hero-stats">
-    <div><span>250+</span> Clientes</div>
-    <div><span>15+</span> Años</div>
-    <div><span>4</span> Países</div>
-</div>
-            <div class="hero-buttons">
-                <a href="#" class="btn-primary">Explorar Soluciones</a>
-                <a href="#" class="btn-secondary">Solicitar Consulta</a>
-            </div>
-        </div>
-        <div class="hero-visual">
-            <canvas id="aiCanvas"></canvas>
-        </div>
-    </div>
-</section>
-	
+  <div class="hero-container">
+    <div class="hero-text">
+      <div class="hero-badge">GRUPO MAS</div>
+      <h1>Tecnología Inteligente para Empresas que Crecen</h1>
+      <p>ERP · Cloud · Automatización · Inteligencia Empresarial</p>
 
+      <div class="hero-stats">
+        <div><span>250+</span> Clientes</div>
+        <div><span>15+</span> Años</div>
+        <div><span>4</span> Países</div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">Explorar Soluciones</a>
+        <a href="contacto.html" class="btn-secondary">Solicitar Consulta</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <canvas id="aiCanvas"></canvas>
+    </div>
+  </div>
+</section>
 
 <section class="section">
+  <canvas id="bgNetwork"></canvas>
 
-<canvas id="bgNetwork"></canvas>
-   
-	<h2>Nuestras Soluciones</h2>
-    <div class="grid">
+  <h2>Nuestras Soluciones</h2>
+  <div class="grid">
 
-        <div class="card">
-            <span class="tag">FINANZAS</span>
-            <img src="assets/icons/mas_account.png" class="icon">
-            <h3>MAS Account</h3>
-            <p>Optimiza procesos empresariales, controla tus finanzas y toma decisiones inteligentes.</p>
-        </div>
-
-        <div class="card">
-            <span class="tag">LABORATORIOS</span>
-            <img src="assets/icons/mas_labs.png" class="icon">
-            <h3>MAS Labs</h3>
-            <p>Gestión de información de laboratorio conforme a la norma ISO 17025.</p>
-        </div>
-
-        <div class="card">
-            <span class="tag">ERP</span>
-            <img src="assets/icons/erp.png" class="icon">
-            <h3>Dynamics 365</h3>
-            <p>ERP de Microsoft para controlar finanzas, operaciones y cadena de suministro.</p>
-        </div>
-
-        <div class="card">
-            <span class="tag">CLOUD</span>
-            <img src="assets/icons/cloud.png" class="icon">
-            <h3>Cloud & Mobile</h3>
-            <p>Infraestructura cloud y aplicaciones móviles para empresas modernas.</p>
-        </div>
-
+    <div class="card">
+      <span class="tag">FINANZAS</span>
+      <img src="assets/icons/mas_account.png" class="icon" alt="MAS Account">
+      <h3>MAS Account</h3>
+      <p>Optimiza procesos empresariales, controla tus finanzas y toma decisiones inteligentes.</p>
     </div>
+
+    <div class="card">
+      <span class="tag">LABORATORIOS</span>
+      <img src="assets/icons/mas_labs.png" class="icon" alt="MAS Labs">
+      <h3>MAS Labs</h3>
+      <p>Gestión de información de laboratorio conforme a la norma ISO 17025.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">ERP</span>
+      <img src="assets/icons/erp.png" class="icon" alt="Dynamics 365">
+      <h3>Dynamics 365</h3>
+      <p>ERP de Microsoft para controlar finanzas, operaciones y cadena de suministro.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag">CLOUD</span>
+      <img src="assets/icons/cloud.png" class="icon" alt="Cloud & Mobile">
+      <h3>Cloud & Mobile</h3>
+      <p>Infraestructura cloud y aplicaciones móviles para empresas modernas.</p>
+    </div>
+
+  </div>
 </section>
 
 <section class="section why">
+  <h2>Por qué elegir Grupo MAS</h2>
 
-<h2>Por qué elegir Grupo MAS</h2>
+  <div class="grid">
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Implementación Ágil</h3>
+      <p>
+        Implementamos soluciones tecnológicas de forma rápida y eficiente,
+        adaptadas a los procesos reales de su empresa.
+      </p>
+    </div>
 
-<div class="grid">
+    <div class="why-card">
+      <div class="why-icon">🔗</div>
+      <h3>Integración de Sistemas</h3>
+      <p>
+        Conectamos ERP, aplicaciones y plataformas para lograr
+        un flujo de información automatizado.
+      </p>
+    </div>
 
-<div class="why-card">
-<div class="why-icon">⚡</div>
-<h3>Implementación Ágil</h3>
-<p>
-Implementamos soluciones tecnológicas de forma rápida y eficiente,
-adaptadas a los procesos reales de su empresa.
-</p>
-</div>
+    <div class="why-card">
+      <div class="why-icon">📊</div>
+      <h3>Decisiones basadas en datos</h3>
+      <p>
+        Transformamos la información empresarial en indicadores
+        estratégicos para la toma de decisiones.
+      </p>
+    </div>
 
-<div class="why-card">
-<div class="why-icon">🔗</div>
-<h3>Integración de Sistemas</h3>
-<p>
-Conectamos ERP, aplicaciones y plataformas para lograr
-un flujo de información automatizado.
-</p>
-</div>
-
-<div class="why-card">
-<div class="why-icon">📊</div>
-<h3>Decisiones basadas en datos</h3>
-<p>
-Transformamos la información empresarial en indicadores
-estratégicos para la toma de decisiones.
-</p>
-</div>
-
-<div class="why-card">
-<div class="why-icon">🛠</div>
-<h3>Soporte Especializado</h3>
-<p>
-Acompañamos a nuestros clientes con soporte técnico
-y mejora continua de sus soluciones.
-</p>
-</div>
-
-</div>
-
+    <div class="why-card">
+      <div class="why-icon">🛠</div>
+      <h3>Soporte Especializado</h3>
+      <p>
+        Acompañamos a nuestros clientes con soporte técnico
+        y mejora continua de sus soluciones.
+      </p>
+    </div>
+  </div>
 </section>
 
 <section class="cta">
-    <h2>¿Listo para transformar tu empresa?</h2>
-    <button>Solicitar Consulta Estratégica</button>
+  <h2>¿Listo para transformar tu empresa?</h2>
+  <button onclick="window.location.href='contacto.html'">Solicitar Consulta Estratégica</button>
 </section>
 
 <footer class="footer">
-© 2026 Grupo MAS - Todos los derechos reservados.
-
+  © 2026 Grupo MAS - Todos los derechos reservados.
 </footer>
 
-	
+<script>
+function toggleISO(){
+  const panel = document.getElementById("isoPanel");
+  panel.classList.toggle("open");
+}
 
-	
-	<script>
+function toggleMenu(){
+  const nav = document.getElementById("navLinks");
+  nav.classList.toggle("show");
+}
 
+document.querySelectorAll(".has-dropdown > a").forEach(function(link){
+  link.addEventListener("click", function(e){
+    if(window.innerWidth <= 900){
+      e.preventDefault();
+      this.parentElement.classList.toggle("open");
+    }
+  });
+});
+</script>
+
+<script>
 const canvas = document.getElementById("aiCanvas");
 const ctx = canvas.getContext("2d");
 
 /* ===== CANVAS HI-RESOLUTION ===== */
-
-const scale = window.devicePixelRatio;
-
+const scale = window.devicePixelRatio || 1;
 canvas.width = canvas.offsetWidth * scale;
 canvas.height = canvas.offsetHeight * scale;
-
 ctx.scale(scale,scale);
 
 const centerX = canvas.offsetWidth/2;
@@ -596,342 +841,199 @@ let mouseX = centerX;
 let mouseY = centerY;
 
 canvas.addEventListener("mousemove",(e)=>{
-
-const rect = canvas.getBoundingClientRect();
-
-mouseX = e.clientX - rect.left;
-mouseY = e.clientY - rect.top;
-
+  const rect = canvas.getBoundingClientRect();
+  mouseX = e.clientX - rect.left;
+  mouseY = e.clientY - rect.top;
 });
 
-
 /* ================= IMAGEN CENTRAL ================= */
-
 const dashboard = new Image();
 dashboard.src = "assets/images/mas.logo.png";
 
-
 /* ================= NODOS ================= */
-
 const nodes = [];
 const NODE_COUNT = 60;
 
 for(let i=0;i<NODE_COUNT;i++){
-
-nodes.push({
-
-angle:Math.random()*Math.PI*2,
-radius:180 + Math.random()*70,
-speed:0.002 + Math.random()*0.003,
-size:2 + Math.random()*2
-
-});
-
+  nodes.push({
+    angle:Math.random()*Math.PI*2,
+    radius:180 + Math.random()*70,
+    speed:0.002 + Math.random()*0.003,
+    size:2 + Math.random()*2
+  });
 }
-
 
 /* ================= PALABRAS ================= */
-
-const words = [
-"IA",
-"DATA",
-"APPS",
-"AUTOMATION",
-"ANALYTICS"
-];
-
+const words = ["IA","DATA","APPS","AUTOMATION","ANALYTICS"];
 let wordRotation = 0;
 
-
 /* ================= ONDAS ================= */
-
 function drawWaves(){
-
-for(let i=1;i<5;i++){
-
-ctx.beginPath();
-
-ctx.arc(
-centerX,
-centerY,
-260 + i*30,
-0,
-Math.PI*2
-);
-
-ctx.strokeStyle = "rgba(30,58,138,0.08)";
-ctx.lineWidth = 2;
-
-ctx.stroke();
-
+  for(let i=1;i<5;i++){
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, 260 + i*30, 0, Math.PI*2);
+    ctx.strokeStyle = "rgba(30,58,138,0.08)";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
 }
-
-}
-
 
 /* ================= ANILLO IA ================= */
-
 function drawRing(){
+  const radius = 160;
+  const thickness = 40;
+  ctx.lineWidth = thickness;
+  const segments = 3;
 
-const radius = 160;
-const thickness = 40;
+  for(let i=0;i<segments;i++){
+    const start = wordRotation + (i*(Math.PI*2/segments));
+    const end = start + Math.PI/2;
 
-ctx.lineWidth = thickness;
+    const gradient = ctx.createLinearGradient(
+      centerX-radius,
+      centerY-radius,
+      centerX+radius,
+      centerY+radius
+    );
 
-const segments = 3;
+    gradient.addColorStop(0,"#7c3aed");
+    gradient.addColorStop(0.5,"#3b82f6");
+    gradient.addColorStop(1,"#06b6d4");
 
-for(let i=0;i<segments;i++){
-
-const start =
-wordRotation +
-(i*(Math.PI*2/segments));
-
-const end =
-start + Math.PI/2;
-
-const gradient =
-ctx.createLinearGradient(
-centerX-radius,
-centerY-radius,
-centerX+radius,
-centerY+radius
-);
-
-gradient.addColorStop(0,"#7c3aed");
-gradient.addColorStop(0.5,"#3b82f6");
-gradient.addColorStop(1,"#06b6d4");
-
-ctx.strokeStyle = gradient;
-
-ctx.beginPath();
-
-ctx.arc(
-centerX,
-centerY,
-radius,
-start,
-end
-);
-
-ctx.stroke();
-
+    ctx.strokeStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, start, end);
+    ctx.stroke();
+  }
 }
-
-}
-
 
 /* ================= TEXTO ORBITANDO ================= */
-
 function drawWords(){
+  const radius = 210;
+  ctx.font = "16px sans-serif";
+  ctx.fillStyle = "#0f172a";
+  ctx.textAlign = "center";
 
-const radius = 210;
-
-ctx.font = "16px sans-serif";
-ctx.fillStyle = "#0f172a";
-ctx.textAlign = "center";
-
-words.forEach((word,i)=>{
-
-const angle =
-wordRotation +
-(i*(Math.PI*2/words.length));
-
-const x =
-centerX + Math.cos(angle)*radius;
-
-const y =
-centerY + Math.sin(angle)*radius;
-
-ctx.fillText(word,x,y);
-
-});
-
+  words.forEach((word,i)=>{
+    const angle = wordRotation + (i*(Math.PI*2/words.length));
+    const x = centerX + Math.cos(angle)*radius;
+    const y = centerY + Math.sin(angle)*radius;
+    ctx.fillText(word,x,y);
+  });
 }
-
 
 /* ================= NODOS ================= */
-
 function drawNodes(){
+  nodes.forEach(node=>{
+    node.angle += node.speed;
 
-nodes.forEach(node=>{
+    const x = centerX + Math.cos(node.angle)*node.radius;
+    const y = centerY + Math.sin(node.angle)*node.radius;
 
-node.angle += node.speed;
+    ctx.beginPath();
+    ctx.moveTo(centerX,centerY);
+    ctx.lineTo(x,y);
+    ctx.strokeStyle = "rgba(124,58,237,0.10)";
+    ctx.lineWidth = 1;
+    ctx.stroke();
 
-const x =
-centerX +
-Math.cos(node.angle)*node.radius;
+    const dx = x-mouseX;
+    const dy = y-mouseY;
+    const dist = Math.sqrt(dx*dx + dy*dy);
 
-const y =
-centerY +
-Math.sin(node.angle)*node.radius;
+    if(dist < 60){
+      ctx.beginPath();
+      ctx.moveTo(mouseX,mouseY);
+      ctx.lineTo(x,y);
+      ctx.strokeStyle = "rgba(59,130,246,0.15)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
 
-
-/* línea núcleo */
-
-ctx.beginPath();
-ctx.moveTo(centerX,centerY);
-ctx.lineTo(x,y);
-
-ctx.strokeStyle = "rgba(124,58,237,0.10)";
-ctx.lineWidth = 1;
-
-ctx.stroke();
-
-
-/* interacción mouse */
-
-const dx = x-mouseX;
-const dy = y-mouseY;
-
-const dist = Math.sqrt(dx*dx + dy*dy);
-
-if(dist < 60){
-
-ctx.beginPath();
-ctx.moveTo(mouseX,mouseY);
-ctx.lineTo(x,y);
-
-ctx.strokeStyle = "rgba(59,130,246,0.15)";
-ctx.lineWidth = 1;
-
-ctx.stroke();
-
+    ctx.beginPath();
+    ctx.arc(x,y,node.size,0,Math.PI*2);
+    ctx.fillStyle = "#1e3a8a";
+    ctx.fill();
+  });
 }
-
-
-/* nodo */
-
-ctx.beginPath();
-ctx.arc(x,y,node.size,0,Math.PI*2);
-
-ctx.fillStyle = "#1e3a8a";
-
-ctx.fill();
-
-});
-
-}
-
 
 /* ================= IMAGEN CENTRAL ================= */
-
 function drawCore(){
+  if(!dashboard.complete) return;
 
-const imgSize =
-Math.min(canvas.offsetWidth,canvas.offsetHeight) * 0.70;
+  const imgSize = Math.min(canvas.offsetWidth,canvas.offsetHeight) * 0.70;
+  const ratio = dashboard.width / dashboard.height;
 
-const ratio =
-dashboard.width / dashboard.height;
+  let drawWidth = imgSize;
+  let drawHeight = imgSize;
 
-let drawWidth = imgSize;
-let drawHeight = imgSize;
+  if(ratio > 1){
+    drawHeight = imgSize / ratio;
+  }else{
+    drawWidth = imgSize * ratio;
+  }
 
-if(ratio > 1){
-
-drawHeight = imgSize / ratio;
-
-}else{
-
-drawWidth = imgSize * ratio;
-
+  ctx.drawImage(
+    dashboard,
+    centerX - drawWidth/2,
+    centerY - drawHeight/2,
+    drawWidth,
+    drawHeight
+  );
 }
-
-ctx.drawImage(
-
-dashboard,
-
-centerX - drawWidth/2,
-centerY - drawHeight/2,
-
-drawWidth,
-drawHeight
-
-);
-
-}
-
 
 /* ================= DIFUMINADO BORDE ================= */
-
 function fadeEdges(){
+  const gradient = ctx.createRadialGradient(
+    centerX,
+    centerY,
+    canvas.offsetHeight*0.4,
+    centerX,
+    centerY,
+    canvas.offsetHeight*0.55
+  );
 
-const gradient = ctx.createRadialGradient(
-centerX,
-centerY,
-canvas.offsetHeight*0.4,
-centerX,
-centerY,
-canvas.offsetHeight*0.55
-);
+  gradient.addColorStop(0,"rgba(0,0,0,0)");
+  gradient.addColorStop(1,"rgba(255,255,255,1)");
 
-gradient.addColorStop(0,"rgba(0,0,0,0)");
-gradient.addColorStop(1,"rgba(255,255,255,1)");
-
-ctx.globalCompositeOperation = "destination-out";
-
-ctx.fillStyle = gradient;
-
-ctx.beginPath();
-ctx.arc(centerX,centerY,canvas.offsetHeight,0,Math.PI*2);
-ctx.fill();
-
-ctx.globalCompositeOperation = "source-over";
-
+  ctx.globalCompositeOperation = "destination-out";
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.arc(centerX,centerY,canvas.offsetHeight,0,Math.PI*2);
+  ctx.fill();
+  ctx.globalCompositeOperation = "source-over";
 }
-
 
 /* ================= ANIMACION ================= */
-
 function animate(){
-
-ctx.clearRect(
-0,
-0,
-canvas.offsetWidth,
-canvas.offsetHeight
-);
-
-drawWaves();
-
-drawRing();
-
-drawNodes();
-
-drawWords();
-
-drawCore();
-
-fadeEdges();
-
-wordRotation += 0.002;
-
-requestAnimationFrame(animate);
-
+  ctx.clearRect(0,0,canvas.offsetWidth,canvas.offsetHeight);
+  drawWaves();
+  drawRing();
+  drawNodes();
+  drawWords();
+  drawCore();
+  fadeEdges();
+  wordRotation += 0.002;
+  requestAnimationFrame(animate);
 }
 
-
 dashboard.onload = function(){
-
-animate();
-
+  animate();
 };
 
+if (dashboard.complete) {
+  animate();
+}
 </script>
-	
-	
-
-	
 
 <script>
-
 /* script del fondo */
-
 const bgCanvas = document.getElementById("bgNetwork");
 const bgCtx = bgCanvas.getContext("2d");
 
 function resizeBG(){
-bgCanvas.width = bgCanvas.offsetWidth;
-bgCanvas.height = bgCanvas.offsetHeight;
+  bgCanvas.width = bgCanvas.offsetWidth;
+  bgCanvas.height = bgCanvas.offsetHeight;
 }
 
 resizeBG();
@@ -941,61 +1043,49 @@ const particles = [];
 const COUNT = 60;
 
 for(let i=0;i<COUNT;i++){
-
-particles.push({
-x:Math.random()*bgCanvas.width,
-y:Math.random()*bgCanvas.height,
-vx:(Math.random()-0.5)*0.4,
-vy:(Math.random()-0.5)*0.4
-});
-
+  particles.push({
+    x:Math.random()*bgCanvas.width,
+    y:Math.random()*bgCanvas.height,
+    vx:(Math.random()-0.5)*0.4,
+    vy:(Math.random()-0.5)*0.4
+  });
 }
 
 function animateBG(){
+  bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
 
-bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
+  particles.forEach(p=>{
+    p.x += p.vx;
+    p.y += p.vy;
 
-particles.forEach(p=>{
+    if(p.x<0||p.x>bgCanvas.width) p.vx*=-1;
+    if(p.y<0||p.y>bgCanvas.height) p.vy*=-1;
 
-p.x += p.vx;
-p.y += p.vy;
+    bgCtx.beginPath();
+    bgCtx.arc(p.x,p.y,2,0,Math.PI*2);
+    bgCtx.fillStyle="#7c3aed";
+    bgCtx.fill();
 
-if(p.x<0||p.x>bgCanvas.width) p.vx*=-1;
-if(p.y<0||p.y>bgCanvas.height) p.vy*=-1;
+    particles.forEach(p2=>{
+      const dx=p.x-p2.x;
+      const dy=p.y-p2.y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
 
-bgCtx.beginPath();
-bgCtx.arc(p.x,p.y,2,0,Math.PI*2);
-bgCtx.fillStyle="#7c3aed";
-bgCtx.fill();
+      if(dist<120){
+        bgCtx.beginPath();
+        bgCtx.moveTo(p.x,p.y);
+        bgCtx.lineTo(p2.x,p2.y);
+        bgCtx.strokeStyle="rgba(124,58,237,0.08)";
+        bgCtx.stroke();
+      }
+    });
+  });
 
-particles.forEach(p2=>{
-
-const dx=p.x-p2.x;
-const dy=p.y-p2.y;
-const dist=Math.sqrt(dx*dx+dy*dy);
-
-if(dist<120){
-
-bgCtx.beginPath();
-bgCtx.moveTo(p.x,p.y);
-bgCtx.lineTo(p2.x,p2.y);
-bgCtx.strokeStyle="rgba(124,58,237,0.08)";
-bgCtx.stroke();
-
-}
-
-});
-
-});
-
-requestAnimationFrame(animateBG);
-
+  requestAnimationFrame(animateBG);
 }
 
 animateBG();
-
 </script>
 
 </body>
-
 </html>

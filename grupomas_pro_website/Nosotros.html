@@ -73,40 +73,140 @@ html{
 scroll-behavior:smooth;
 }
 
+a{
+text-decoration:none;
+color:inherit;
+}
+
 /* ================= NAVBAR ================= */
 
 .navbar{
 position:fixed;
+top:0;
+left:0;
 width:100%;
-height:75px;
-padding:0 80px;
+height:78px;
+display:flex;
+align-items:center;
+z-index:1000;
+background:rgba(15,23,42,0.95);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.navbar-inner{
+width:min(1200px, calc(100% - 40px));
+margin:0 auto;
 display:flex;
 align-items:center;
 justify-content:space-between;
-background:rgba(15,23,42,0.95);
-z-index:1000;
+gap:20px;
+}
+
+.logo-link{
+display:flex;
+align-items:center;
+flex-shrink:0;
 }
 
 .logo{
-height:48px;
+height:46px;
+width:auto;
+max-height:46px;
+object-fit:contain;
+display:block;
 }
 
-.navbar ul{
+.nav-links{
 list-style:none;
 display:flex;
-gap:35px;
+align-items:center;
+gap:22px;
 }
 
-.navbar a{
-text-decoration:none;
-color:white;
+.nav-links > li{
+position:relative;
+}
+
+.nav-links a{
+color:#fff;
 font-size:15px;
 font-weight:500;
 transition:0.3s;
+display:flex;
+align-items:center;
+gap:6px;
 }
 
-.navbar a:hover{
+.nav-links a:hover,
+.nav-links a.active{
 color:#a78bfa;
+}
+
+.arrow{
+font-size:12px;
+}
+
+.nav-cta{
+padding:10px 16px;
+background:#7c3aed;
+border-radius:10px;
+font-weight:700;
+}
+
+.nav-cta:hover{
+background:#6d28d9;
+color:#fff !important;
+}
+
+.has-dropdown .dropdown-menu{
+position:absolute;
+top:calc(100% + 14px);
+left:0;
+min-width:220px;
+background:#ffffff;
+border:1px solid rgba(15,23,42,0.08);
+border-radius:16px;
+box-shadow:0 20px 40px rgba(15,23,42,0.12);
+padding:10px 0;
+list-style:none;
+opacity:0;
+visibility:hidden;
+transform:translateY(8px);
+transition:all 0.25s ease;
+z-index:1001;
+}
+
+.has-dropdown:hover .dropdown-menu{
+opacity:1;
+visibility:visible;
+transform:translateY(0);
+}
+
+.dropdown-menu li{
+width:100%;
+}
+
+.dropdown-menu a{
+color:#0f172a;
+padding:11px 16px;
+display:block;
+font-size:14px;
+font-weight:500;
+}
+
+.dropdown-menu a:hover{
+background:#f8fafc;
+color:#7c3aed;
+}
+
+.nav-toggle{
+display:none;
+background:none;
+border:none;
+color:white;
+font-size:28px;
+cursor:pointer;
 }
 
 /* ================= HERO ================= */
@@ -258,6 +358,7 @@ padding:15px 45px;
 border:none;
 border-radius:10px;
 font-weight:600;
+cursor:pointer;
 }
 
 /* ================= FOOTER ================= */
@@ -270,6 +371,116 @@ border-top:1px solid rgba(0,0,0,0.05);
 text-align:center;
 }
 
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1080px){
+.hero-container{
+flex-direction:column;
+text-align:center;
+gap:50px;
+}
+
+.hero-stats{
+justify-content:center;
+flex-wrap:wrap;
+}
+}
+
+@media (max-width: 900px){
+.nav-toggle{
+display:block;
+}
+
+.nav-links{
+position:absolute;
+top:78px;
+left:0;
+width:100%;
+background:rgba(15,23,42,0.98);
+flex-direction:column;
+align-items:flex-start;
+padding:22px 20px;
+display:none;
+gap:14px;
+}
+
+.nav-links.show{
+display:flex;
+}
+
+.nav-links > li{
+width:100%;
+}
+
+.nav-links > li > a{
+width:100%;
+justify-content:space-between;
+}
+
+.has-dropdown .dropdown-menu{
+position:static;
+opacity:1;
+visibility:visible;
+transform:none;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:none;
+margin-top:10px;
+display:none;
+width:100%;
+}
+
+.has-dropdown.open .dropdown-menu{
+display:block;
+}
+
+.dropdown-menu a{
+color:#e2e8f0;
+}
+
+.dropdown-menu a:hover{
+background:rgba(255,255,255,0.06);
+color:#c4b5fd;
+}
+}
+
+@media (max-width: 820px){
+.hero{
+padding:145px 24px 90px;
+}
+
+.section{
+padding:90px 24px;
+}
+
+.hero-text h1{
+font-size:40px;
+}
+
+.hero-text p{
+font-size:18px;
+}
+
+.section h2{
+font-size:32px;
+}
+
+.iso-tab{
+display:none;
+}
+}
+
+@media (max-width: 520px){
+.hero-text h1{
+font-size:32px;
+}
+
+.hero-stats{
+flex-direction:column;
+gap:12px;
+}
+}
+
 </style>
 </head>
 
@@ -278,215 +489,223 @@ text-align:center;
 <!-- ISO -->
 
 <div class="iso-tab">
+  <div class="iso-button" onclick="toggleISO()">
+    ISO 9001
+  </div>
 
-<div class="iso-button" onclick="toggleISO()">
-ISO 9001
+  <div class="iso-panel" id="isoPanel">
+    <img src="assets/images/ISO.jpg" alt="ISO 9001">
+  </div>
 </div>
-
-<div class="iso-panel" id="isoPanel">
-<img src="assets/images/ISO.jpg">
-</div>
-
-</div>
-
-<script>
-
-function toggleISO(){
-const panel = document.getElementById("isoPanel");
-panel.classList.toggle("open");
-}
-
-</script>
 
 <!-- NAVBAR -->
 
 <header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo-link">
+      <img src="assets/images/logo.png" class="logo" alt="Grupo MAS">
+    </a>
 
-<img src="assets/images/logo.png" class="logo">
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
 
-<nav>
-<ul>
-<li><a href="index.html">Inicio</a></li>
-<li><a href="Nosotros.html">Nosotros</a></li>
-<li><a href="#">Servicios</a></li>
-<li><a href="#">Contacto</a></li>
-</ul>
-</nav>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Nosotros.html" class="active">Nosotros</a></li>
 
+        <li class="has-dropdown">
+          <a href="servicios.html">Servicios <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="servicios.html#adaptacion">Adaptación / Localización</a></li>
+            <li><a href="servicios.html#desarrollo">Desarrollo</a></li>
+            <li><a href="servicios.html#consultoria">Consultoría Funcional</a></li>
+            <li><a href="servicios.html#arca">Servicios ARCA</a></li>
+            <li><a href="servicios.html#movil">Desarrollo Móvil</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="#">Soluciones <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://www.masaccount.com.ar/" target="_blank">Mas Account</a></li>
+            <li><a href="https://www.maslabs.com.ar/" target="_blank">Mas Labs</a></li>
+            <li><a href="https://www.microsoft.com/es-es/dynamics-365/products/business-central">Business Central</a></li>
+          </ul>
+        </li>
+
+        <li><a href="contacto.html">Contacto</a></li>
+        
+        
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <!-- HERO -->
 
 <section class="hero">
+  <div class="hero-container">
+    <div class="hero-text">
+      <span class="hero-badge">GRUPO MAS</span>
 
-<div class="hero-container">
+      <h1>Más de 15 años impulsando la transformación tecnológica</h1>
 
-<div class="hero-text">
+      <p>
+        Grupo MAS acompaña a empresas en su evolución digital mediante
+        soluciones tecnológicas empresariales, integración de sistemas
+        y plataformas de gestión inteligente.
+      </p>
 
-<span class="hero-badge">GRUPO MAS</span>
+      <div class="hero-stats">
+        <div><span>250+</span> Clientes</div>
+        <div><span>15+</span> Años</div>
+        <div><span>4</span> Países</div>
+      </div>
+    </div>
 
-<h1>Más de 15 años impulsando la transformación tecnológica</h1>
-
-<p>
-Grupo MAS acompaña a empresas en su evolución digital mediante
-soluciones tecnológicas empresariales, integración de sistemas
-y plataformas de gestión inteligente.
-</p>
-
-<div class="hero-stats">
-<div><span>250+</span> Clientes</div>
-<div><span>15+</span> Años</div>
-<div><span>4</span> Países</div>
-</div>
-
-</div>
-
-<div class="hero-visual">
-<img src="">
-</div>
-
-</div>
-
+    <div class="hero-visual">
+      <img src="" alt="">
+    </div>
+  </div>
 </section>
 
 <!-- HISTORIA -->
 
 <section class="section">
+  <h2>Nuestra Historia</h2>
 
-<h2>Nuestra Historia</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Nuestros inicios</h3>
 
-<div class="grid">
+      <p>
+        Grupo MAS nace con el objetivo de ayudar a las empresas a
+        modernizar su gestión mediante soluciones tecnológicas
+        capaces de integrar procesos, datos y sistemas.
+      </p>
+    </div>
 
-<div class="card">
+    <div class="card">
+      <h3>Crecimiento</h3>
 
-<h3>Nuestros inicios</h3>
+      <p>
+        A lo largo de los años expandimos nuestras soluciones
+        incorporando ERP, automatización empresarial,
+        arquitectura cloud e inteligencia de negocios.
+      </p>
+    </div>
 
-<p>
-Grupo MAS nace con el objetivo de ayudar a las empresas a
-modernizar su gestión mediante soluciones tecnológicas
-capaces de integrar procesos, datos y sistemas.
-</p>
+    <div class="card">
+      <h3>Presente</h3>
 
-</div>
-
-<div class="card">
-
-<h3>Crecimiento</h3>
-
-<p>
-A lo largo de los años expandimos nuestras soluciones
-incorporando ERP, automatización empresarial,
-arquitectura cloud e inteligencia de negocios.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Presente</h3>
-
-<p>
-Hoy acompañamos a organizaciones en diferentes países
-ayudándolas a optimizar su operación mediante tecnología.
-</p>
-
-</div>
-
-</div>
-
+      <p>
+        Hoy acompañamos a organizaciones en diferentes países
+        ayudándolas a optimizar su operación mediante tecnología.
+      </p>
+    </div>
+  </div>
 </section>
 
 <!-- FILOSOFIA -->
 
 <section class="section why">
+  <h2>Nuestra Filosofía</h2>
 
-<h2>Nuestra Filosofía</h2>
+  <div class="grid">
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <h3>Misión</h3>
+      <p>
+        Impulsar la transformación digital de las organizaciones
+        mediante soluciones tecnológicas innovadoras y eficientes.
+      </p>
+    </div>
 
-<div class="grid">
+    <div class="why-card">
+      <div class="why-icon">🚀</div>
+      <h3>Visión</h3>
+      <p>
+        Ser un socio tecnológico estratégico para empresas que
+        buscan optimizar su operación y crecer.
+      </p>
+    </div>
 
-<div class="why-card">
-<div class="why-icon">🎯</div>
-<h3>Misión</h3>
-<p>
-Impulsar la transformación digital de las organizaciones
-mediante soluciones tecnológicas innovadoras y eficientes.
-</p>
-</div>
-
-<div class="why-card">
-<div class="why-icon">🚀</div>
-<h3>Visión</h3>
-<p>
-Ser un socio tecnológico estratégico para empresas que
-buscan optimizar su operación y crecer.
-</p>
-</div>
-
-<div class="why-card">
-<div class="why-icon">🤝</div>
-<h3>Valores</h3>
-<p>
-Innovación, compromiso, excelencia y relaciones de largo
-plazo con nuestros clientes.
-</p>
-</div>
-
-</div>
-
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <h3>Valores</h3>
+      <p>
+        Innovación, compromiso, excelencia y relaciones de largo
+        plazo con nuestros clientes.
+      </p>
+    </div>
+  </div>
 </section>
 
 <!-- METRICAS -->
 
 <section class="section metrics">
+  <h2>Nuestra Experiencia</h2>
 
-<h2>Nuestra Experiencia</h2>
+  <div class="grid">
+    <div>
+      <div class="metric-number">250+</div>
+      Clientes
+    </div>
 
-<div class="grid">
+    <div>
+      <div class="metric-number">15+</div>
+      Años
+    </div>
 
-<div>
-<div class="metric-number">250+</div>
-Clientes
-</div>
+    <div>
+      <div class="metric-number">4</div>
+      Países
+    </div>
 
-<div>
-<div class="metric-number">15+</div>
-Años
-</div>
-
-<div>
-<div class="metric-number">4</div>
-Países
-</div>
-
-<div>
-<div class="metric-number">100+</div>
-Proyectos
-</div>
-
-</div>
-
+    <div>
+      <div class="metric-number">100+</div>
+      Proyectos
+    </div>
+  </div>
 </section>
 
 <!-- CTA -->
 
 <section class="cta">
+  <h2>Trabajemos juntos</h2>
 
-<h2>Trabajemos juntos</h2>
+  <p style="margin-top:15px;margin-bottom:30px">
+    Descubra cómo la tecnología puede impulsar el crecimiento
+    de su empresa.
+  </p>
 
-<p style="margin-top:15px;margin-bottom:30px">
-Descubra cómo la tecnología puede impulsar el crecimiento
-de su empresa.
-</p>
-
-<button>Contactar a Grupo MAS</button>
-
+  <button onclick="window.location.href='contacto.html'">Contactar a Grupo MAS</button>
 </section>
 
 <footer class="footer">
-
-© 2026 Grupo MAS - Todos los derechos reservados.
-
+  © 2026 Grupo MAS - Todos los derechos reservados.
 </footer>
+
+<script>
+function toggleISO(){
+  const panel = document.getElementById("isoPanel");
+  panel.classList.toggle("open");
+}
+
+function toggleMenu(){
+  const nav = document.getElementById("navLinks");
+  nav.classList.toggle("show");
+}
+
+document.querySelectorAll(".has-dropdown > a").forEach(function(link){
+  link.addEventListener("click", function(e){
+    if(window.innerWidth <= 900){
+      e.preventDefault();
+      this.parentElement.classList.toggle("open");
+    }
+  });
+});
+</script>
 
 </body>
 </html>

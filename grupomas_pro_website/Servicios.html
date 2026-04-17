@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grupo MAS | Servicios</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#7c3aed;
+  --primary-dark:#6d28d9;
+  --dark:#0f172a;
+  --dark-2:#1e293b;
+  --text:#334155;
+  --muted:#64748b;
+  --light:#f8fafc;
+  --light-2:#eef2ff;
+  --white:#ffffff;
+  --border:rgba(15,23,42,0.08);
+  --shadow:0 20px 50px rgba(15,23,42,0.08);
+  --radius:22px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#ffffff;
+  color:var(--dark);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.container{
+  width:min(1200px, calc(100% - 40px));
+  margin:0 auto;
+}
+
+/* ISO lateral */
+.iso-tab{
+  position:fixed;
+  right:0;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+}
+
+.iso-button{
+  background:var(--primary);
+  color:white;
+  padding:15px 12px;
+  font-weight:700;
+  cursor:pointer;
+  border-radius:12px 0 0 12px;
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  box-shadow:0 10px 25px rgba(124,58,237,0.25);
+}
+
+.iso-panel{
+  width:0;
+  overflow:hidden;
+  background:white;
+  transition:width 0.35s ease;
+  box-shadow:-8px 0 30px rgba(0,0,0,0.18);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:16px 0 0 16px;
+}
+
+.iso-panel img{
+  width:100%;
+  height:auto;
+  max-width:280px;
+  margin:20px;
+}
+
+.iso-panel.open{
+  width:320px;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:78px;
+  display:flex;
+  align-items:center;
+  z-index:1000;
+  background:rgba(15,23,42,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.navbar-inner{
+  width:min(1200px, calc(100% - 40px));
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  height:46px;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.nav-links > li{
+  position:relative;
+}
+
+.nav-links a{
+  color:#fff;
+  font-size:15px;
+  font-weight:500;
+  transition:0.3s;
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:#c4b5fd;
+}
+
+.arrow{
+  font-size:12px;
+}
+
+.nav-cta{
+  padding:10px 16px;
+  background:var(--primary);
+  border-radius:10px;
+  font-weight:700;
+}
+
+.nav-cta:hover{
+  background:var(--primary-dark);
+  color:#fff !important;
+}
+
+.has-dropdown .dropdown-menu{
+  position:absolute;
+  top:calc(100% + 14px);
+  left:0;
+  min-width:230px;
+  background:#ffffff;
+  border:1px solid rgba(15,23,42,0.08);
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(15,23,42,0.12);
+  padding:10px 0;
+  list-style:none;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  transition:all 0.25s ease;
+  z-index:1001;
+}
+
+.has-dropdown:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+.dropdown-menu li{
+  width:100%;
+}
+
+.dropdown-menu a{
+  color:#0f172a;
+  padding:11px 16px;
+  display:block;
+  font-size:14px;
+  font-weight:500;
+}
+
+.dropdown-menu a:hover{
+  background:#f8fafc;
+  color:var(--primary);
+}
+
+.nav-toggle{
+  display:none;
+  background:none;
+  border:none;
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  padding:165px 0 110px;
+  background:linear-gradient(180deg,#ffffff 0%, #f4f6ff 100%);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  background:radial-gradient(circle, rgba(124,58,237,0.14) 0%, rgba(124,58,237,0) 70%);
+  top:-120px;
+  right:-100px;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:340px;
+  height:340px;
+  background:radial-gradient(circle, rgba(59,130,246,0.10) 0%, rgba(59,130,246,0) 70%);
+  bottom:-120px;
+  left:-80px;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:60px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+
+.badge{
+  display:inline-block;
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--primary);
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:56px;
+  line-height:1.05;
+  letter-spacing:-1.5px;
+  margin-bottom:22px;
+}
+
+.hero p{
+  font-size:19px;
+  color:var(--text);
+  max-width:720px;
+  margin-bottom:34px;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-bottom:36px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:15px 24px;
+  border-radius:12px;
+  font-weight:700;
+  transition:0.25s ease;
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+  box-shadow:0 14px 30px rgba(124,58,237,0.22);
+}
+
+.btn-primary:hover{
+  background:var(--primary-dark);
+  transform:translateY(-2px);
+}
+
+.btn-secondary{
+  background:#fff;
+  color:var(--dark);
+  border:1px solid var(--border);
+}
+
+.btn-secondary:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow);
+}
+
+.hero-stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:26px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.hero-stats span{
+  display:block;
+  color:var(--dark);
+  font-size:24px;
+  font-weight:800;
+  line-height:1.1;
+}
+
+.hero-visual{
+  background:linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+  color:white;
+  padding:34px;
+  border-radius:28px;
+  box-shadow:0 30px 60px rgba(15,23,42,0.22);
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-visual::before{
+  content:"";
+  position:absolute;
+  inset:auto -50px -50px auto;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:rgba(124,58,237,0.16);
+}
+
+.visual-card{
+  position:relative;
+  z-index:1;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:18px;
+}
+
+.visual-card:last-child{
+  margin-bottom:0;
+}
+
+.visual-card h3{
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.visual-card p{
+  color:#cbd5e1;
+  font-size:14px;
+}
+
+/* GENERAL SECTIONS */
+.section{
+  padding:100px 0;
+}
+
+.section-header{
+  text-align:center;
+  margin-bottom:56px;
+}
+
+.section-header .eyebrow{
+  display:inline-block;
+  color:var(--primary);
+  font-size:13px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:12px;
+}
+
+.section-header h2{
+  font-size:42px;
+  line-height:1.1;
+  margin-bottom:14px;
+}
+
+.section-header p{
+  max-width:760px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:17px;
+}
+
+/* Cards servicios */
+.services-overview{
+  background:var(--light);
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:26px;
+}
+
+.service-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  box-shadow:0 10px 35px rgba(15,23,42,0.04);
+  transition:0.28s ease;
+}
+
+.service-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow);
+}
+
+.service-icon{
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:var(--light-2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+.service-card h3{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.service-card p{
+  color:var(--text);
+  margin-bottom:16px;
+}
+
+.service-card a{
+  color:var(--primary);
+  font-weight:700;
+}
+
+/* Bloques detallados */
+.service-detail{
+  padding:95px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.service-detail:last-of-type{
+  border-bottom:none;
+}
+
+.detail-grid{
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:42px;
+  align-items:center;
+}
+
+.detail-grid.reverse{
+  grid-template-columns:0.95fr 1.05fr;
+}
+
+.detail-copy .tag{
+  display:inline-block;
+  color:var(--primary);
+  font-weight:700;
+  text-transform:uppercase;
+  font-size:13px;
+  letter-spacing:1px;
+  margin-bottom:14px;
+}
+
+.detail-copy h2{
+  font-size:40px;
+  line-height:1.1;
+  margin-bottom:18px;
+}
+
+.detail-copy h3{
+  font-size:22px;
+  color:var(--dark-2);
+  margin-bottom:18px;
+}
+
+.detail-copy p{
+  color:var(--text);
+  margin-bottom:16px;
+  font-size:16px;
+}
+
+.feature-list{
+  list-style:none;
+  margin-top:22px;
+  display:grid;
+  gap:12px;
+}
+
+.feature-list li{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:15px 18px;
+  color:var(--dark);
+  box-shadow:0 10px 25px rgba(15,23,42,0.04);
+}
+
+.feature-list li strong{
+  color:var(--primary);
+}
+
+.detail-visual{
+  background:linear-gradient(145deg,#f8fafc 0%,#eef2ff 100%);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:30px;
+  box-shadow:var(--shadow);
+}
+
+.visual-badge{
+  display:inline-block;
+  font-size:12px;
+  font-weight:700;
+  color:var(--primary);
+  background:#ede9fe;
+  padding:7px 12px;
+  border-radius:999px;
+  margin-bottom:18px;
+}
+
+.detail-visual h4{
+  font-size:24px;
+  margin-bottom:14px;
+}
+
+.detail-visual p{
+  color:var(--text);
+  margin-bottom:18px;
+}
+
+.mini-points{
+  display:grid;
+  gap:12px;
+}
+
+.mini-points div{
+  background:#fff;
+  border-radius:14px;
+  padding:14px 16px;
+  border:1px solid var(--border);
+}
+
+.dark-panel{
+  background:linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+  color:#fff;
+  border:none;
+}
+
+.dark-panel p{
+  color:#cbd5e1;
+}
+
+.dark-panel .mini-points div{
+  background:rgba(255,255,255,0.06);
+  border-color:rgba(255,255,255,0.08);
+}
+
+/* Cobertura / diferencial */
+.coverage{
+  background:#f8fafc;
+}
+
+.coverage-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:18px;
+}
+
+.coverage-item{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  font-weight:600;
+  color:var(--dark-2);
+  box-shadow:0 8px 22px rgba(15,23,42,0.04);
+}
+
+/* CTA */
+.cta{
+  padding:100px 0;
+  background:linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+  color:#fff;
+  text-align:center;
+}
+
+.cta h2{
+  font-size:42px;
+  margin-bottom:14px;
+}
+
+.cta p{
+  max-width:760px;
+  margin:0 auto 28px;
+  color:#ede9fe;
+  font-size:18px;
+}
+
+.cta .btn{
+  background:#fff;
+  color:var(--primary);
+}
+
+/* FOOTER */
+.footer{
+  background:#0b1120;
+  color:#cbd5e1;
+  padding:70px 0 0;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr 1fr;
+  gap:28px;
+  padding-bottom:34px;
+}
+
+.footer h3{
+  color:#fff;
+  font-size:18px;
+  margin-bottom:16px;
+}
+
+.footer p,
+.footer li,
+.footer a{
+  font-size:14px;
+  color:#cbd5e1;
+}
+
+.footer ul{
+  list-style:none;
+  display:grid;
+  gap:10px;
+}
+
+.social{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.social a{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.25s ease;
+}
+
+.social a:hover{
+  background:var(--primary);
+  color:#fff;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.08);
+  padding:18px 0;
+  text-align:center;
+  font-size:13px;
+  color:#94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 1080px){
+  .hero-grid,
+  .detail-grid,
+  .detail-grid.reverse,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  .services-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+
+  .coverage-grid{
+    grid-template-columns:repeat(3, 1fr);
+  }
+
+  .hero h1{
+    font-size:46px;
+  }
+}
+
+@media (max-width: 900px){
+  .nav-toggle{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:78px;
+    left:0;
+    width:100%;
+    background:rgba(15,23,42,0.98);
+    flex-direction:column;
+    align-items:flex-start;
+    padding:22px 20px;
+    display:none;
+    gap:14px;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links > li{
+    width:100%;
+  }
+
+  .nav-links > li > a{
+    width:100%;
+    justify-content:space-between;
+  }
+
+  .has-dropdown .dropdown-menu{
+    position:static;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:none;
+    margin-top:10px;
+    display:none;
+    width:100%;
+  }
+
+  .has-dropdown.open .dropdown-menu{
+    display:block;
+  }
+
+  .dropdown-menu a{
+    color:#e2e8f0;
+  }
+
+  .dropdown-menu a:hover{
+    background:rgba(255,255,255,0.06);
+    color:#c4b5fd;
+  }
+}
+
+@media (max-width: 820px){
+  .hero{
+    padding:145px 0 90px;
+  }
+
+  .section,
+  .service-detail,
+  .cta{
+    padding:80px 0;
+  }
+
+  .section-header h2,
+  .cta h2,
+  .detail-copy h2{
+    font-size:34px;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+  .services-grid{
+    grid-template-columns:1fr;
+  }
+
+  .coverage-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+
+  .iso-tab{
+    display:none;
+  }
+}
+
+@media (max-width: 520px){
+  .container{
+    width:min(100% - 24px, 1200px);
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+  .section-header h2,
+  .cta h2,
+  .detail-copy h2{
+    font-size:29px;
+  }
+
+  .coverage-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-stats{
+    gap:18px;
+  }
+
+  .hero-stats span{
+    font-size:20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ISO -->
+<div class="iso-tab">
+  <div class="iso-button" onclick="toggleISO()">ISO 9001</div>
+  <div class="iso-panel" id="isoPanel">
+    <img src="assets/images/ISO.jpg" alt="Certificación ISO 9001">
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html">
+      <img src="assets/images/logo.png" class="logo" alt="Grupo MAS">
+    </a>
+
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Nosotros.html">Nosotros</a></li>
+
+        <li class="has-dropdown">
+          <a href="servicios.html" class="active">Servicios <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#adaptacion">Adaptación / Localización</a></li>
+            <li><a href="#desarrollo">Desarrollo</a></li>
+            <li><a href="#consultoria">Consultoría Funcional</a></li>
+            <li><a href="#arca">Servicios ARCA</a></li>
+            <li><a href="#movil">Desarrollo Móvil</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="#">Soluciones <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://www.masaccount.com.ar/" target="_blank">Mas Account</a></li>
+            <li><a href="https://www.maslabs.com.ar/" target="_blank">Mas Labs</a></li>
+            <li><a href="https://www.microsoft.com/es-es/dynamics-365/products/business-central">Business Central</a></li>
+          </ul>
+        </li>
+
+        <li><a href="contacto.html">Contacto</a></li>
+        
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">GRUPO MAS</span>
+      <h1>Servicios tecnológicos para impulsar la evolución de su empresa</h1>
+      <p>
+        Acompañamos a organizaciones en sus procesos de transformación con servicios de
+        adaptación, desarrollo, consultoría funcional, integración fiscal con ARCA
+        y soluciones móviles conectadas al negocio.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#servicios" class="btn btn-primary">Ver servicios</a>
+        <a href="contacto.html" class="btn btn-secondary">Contactar</a>
+      </div>
+
+      <div class="hero-stats">
+        <div><span>5</span> Líneas de servicio</div>
+        <div><span>15+</span> Años de experiencia</div>
+        <div><span>4</span> Países con presencia</div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="visual-card">
+        <h3>Servicios integrales</h3>
+        <p>Diseñamos, implementamos y acompañamos soluciones alineadas con los procesos reales de cada empresa.</p>
+      </div>
+      <div class="visual-card">
+        <h3>Enfoque práctico</h3>
+        <p>Unimos conocimiento funcional, desarrollo y experiencia tecnológica para resolver necesidades concretas.</p>
+      </div>
+      <div class="visual-card">
+        <h3>Escalabilidad</h3>
+        <p>Trabajamos sobre plataformas empresariales y proyectos que permiten crecer con orden, trazabilidad y control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section services-overview" id="servicios">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Servicios</span>
+      <h2>Una propuesta integral para cada etapa del negocio</h2>
+      <p>
+        Reunimos en una sola página las capacidades principales de Grupo MAS para que
+        sus clientes puedan comprender rápidamente qué hacemos y cómo agregamos valor.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-icon">🌍</div>
+        <h3>Adaptación / Localización</h3>
+        <p>Soluciones específicas que garantizan altos estándares de cumplimiento fiscal y contable.</p>
+        <a href="#adaptacion">Ver más</a>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Desarrollo</h3>
+        <p>Experiencia en análisis, diseño, desarrollo e implementación de soluciones empresariales.</p>
+        <a href="#desarrollo">Ver más</a>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">🧩</div>
+        <h3>Consultoría Funcional</h3>
+        <p>Flexibilidad en soluciones tecnológicas agregando valor a su organización.</p>
+        <a href="#consultoria">Ver más</a>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">🧾</div>
+        <h3>Servicios ARCA</h3>
+        <p>Automatización para registración fiscal, facturación electrónica y procesos vinculados.</p>
+        <a href="#arca">Ver más</a>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">📱</div>
+        <h3>Desarrollo Móvil</h3>
+        <p>Aplicaciones móviles integradas con ERP y plataformas de gestión empresarial.</p>
+        <a href="#movil">Ver más</a>
+      </article>
+
+      <article class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>Visión integral</h3>
+        <p>Combinamos tecnología, procesos y acompañamiento para transformar operaciones en resultados.</p>
+        <a href="contacto.html">Consultar</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ADAPTACION -->
+<section class="service-detail" id="adaptacion">
+  <div class="container detail-grid">
+    <div class="detail-copy">
+      <span class="tag">Adaptación / Localización</span>
+      <h2>Soluciones específicas que garantizan altos estándares de cumplimiento fiscal</h2>
+      <h3>Localización fiscal y contable para operaciones regionales</h3>
+      <p>
+        Como Partner de Microsoft, Grupo MAS dispone de soluciones que ayudan a sus clientes
+        a cumplir con sus obligaciones contables y fiscales en distintos territorios.
+      </p>
+      <p>
+        En diversos países de la región, los organismos fiscales del Estado han incorporado
+        requisitos de cumplimiento para medianas y grandes compañías. Adaptamos los sistemas
+        a dichos requerimientos cumpliendo con altos estándares.
+      </p>
+      <p>
+        Además, complementamos la aplicación básica de Microsoft Dynamics con desarrollos que
+        permiten responder a leyes y regulaciones específicas no cubiertas por el estándar.
+      </p>
+
+      <ul class="feature-list">
+        <li><strong>Facturación Electrónica:</strong> integración de procesos fiscales al entorno del negocio.</li>
+        <li><strong>Contabilidad Electrónica:</strong> funcionalidades para adecuarse a normativas locales.</li>
+        <li><strong>Adaptaciones regionales:</strong> cumplimiento normativo sin salir del ecosistema Microsoft Dynamics.</li>
+      </ul>
+    </div>
+
+    <div class="detail-visual">
+      <span class="visual-badge">Cumplimiento regional</span>
+      <h4>Localizaciones y adaptaciones desarrolladas</h4>
+      <p>
+        Disponemos de localizaciones propias desarrolladas por nuestros equipos en países
+        donde Microsoft no ofrece una versión localizada del software.
+      </p>
+      <div class="mini-points">
+        <div>Argentina</div>
+        <div>Brasil</div>
+        <div>Chile</div>
+        <div>Colombia</div>
+        <div>Costa Rica</div>
+        <div>Ecuador</div>
+        <div>El Salvador</div>
+        <div>Guatemala</div>
+        <div>Honduras</div>
+        <div>México</div>
+        <div>Nicaragua</div>
+        <div>Panamá</div>
+        <div>Paraguay</div>
+        <div>Perú</div>
+        <div>República Dominicana</div>
+        <div>Uruguay</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESARROLLO -->
+<section class="service-detail" id="desarrollo">
+  <div class="container detail-grid reverse">
+    <div class="detail-visual dark-panel">
+      <span class="visual-badge">Fábrica de software</span>
+      <h4>Desarrollo con foco en calidad, productividad e implementación</h4>
+      <p>
+        Nuestro equipo de desarrolladores cuenta con la experiencia necesaria para llevar
+        adelante proyectos de análisis, asesoramiento, diseño, desarrollo e implementación final.
+      </p>
+      <div class="mini-points">
+        <div>Planes de formación, certificación y carreras profesionales</div>
+        <div>Reusabilidad de componentes</div>
+        <div>Métricas, metodología y control de calidad</div>
+      </div>
+    </div>
+
+    <div class="detail-copy">
+      <span class="tag">Desarrollo</span>
+      <h2>Experiencia probada en análisis, diseño, desarrollo e implementación</h2>
+      <h3>Soluciones a medida con respaldo metodológico</h3>
+      <p>
+        Proporcionamos servicios de desarrollo a través de nuestra Fábrica de Software,
+        eje principal del crecimiento sostenido de Grupo MAS.
+      </p>
+      <p>
+        El enfoque de factoría añade al portfolio mejores ratios de calidad, capacidades
+        multitecnología y una base sólida para afrontar la demanda creciente de outsourcing
+        de desarrollo de aplicaciones.
+      </p>
+      <p>
+        Aplicamos técnicas avanzadas de aumento de productividad bajo parámetros de alta calidad
+        e innovación constante, basándonos en estándares internacionales de gestión de procesos TI.
+      </p>
+
+      <ul class="feature-list">
+        <li>Diseño e implementación de soluciones empresariales</li>
+        <li>Outsourcing de desarrollo de aplicaciones</li>
+        <li>Enfoque multiidioma y multitecnología</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTORIA -->
+<section class="service-detail" id="consultoria">
+  <div class="container detail-grid">
+    <div class="detail-copy">
+      <span class="tag">Consultoría Funcional</span>
+      <h2>Flexibilidad en soluciones tecnológicas agregando valor a su organización</h2>
+      <h3>Consultores expertos en gestión del cambio y reingeniería de procesos</h3>
+      <p>
+        En una era donde la flexibilidad puede ser sinónimo de supervivencia, proporcionamos
+        la solución tecnológica que mejor se adapta a cada empresa en cada momento.
+      </p>
+      <p>
+        Añadimos valor interpretando y apoyando la visión del negocio, incorporándonos a los
+        equipos del cliente para obtener el máximo rendimiento de las soluciones implementadas.
+      </p>
+      <p>
+        Nuestro equipo evalúa los procesos en forma global y también los requerimientos de cada
+        área en particular, facilitando mejoras concretas y sostenibles.
+      </p>
+
+      <ul class="feature-list">
+        <li>Estandarización de metodologías</li>
+        <li>Simplificación de procesos</li>
+        <li>Agilización de tareas</li>
+      </ul>
+    </div>
+
+    <div class="detail-visual">
+      <span class="visual-badge">Transformación operativa</span>
+      <h4>Una unidad de negocio dedicada exclusivamente a la consultoría funcional</h4>
+      <p>
+        Acompañamos nuevos proyectos vinculados con gestión del cambio, reestructuración,
+        optimización de procesos de negocio y planes de sistemas.
+      </p>
+      <div class="mini-points">
+        <div>Visión integral de procesos</div>
+        <div>Enfoque pragmático y realista</div>
+        <div>Experiencia sectorial y tecnológica</div>
+        <div>Acompañamiento cercano a los equipos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCA -->
+<section class="service-detail" id="arca">
+  <div class="container detail-grid reverse">
+    <div class="detail-visual">
+      <span class="visual-badge">Integración fiscal</span>
+      <h4>Herramienta automática para registración con ARCA</h4>
+      <p>
+        Desarrollamos una solución transparente mediante Web Service para automatizar
+        la registración y facilitar procesos fiscales y documentales.
+      </p>
+      <div class="mini-points">
+        <div><strong>CAE:</strong> autorización electrónica para facturas, recibos, notas de crédito y débito.</div>
+        <div><strong>CAEA:</strong> código de autorización electrónica anticipado.</div>
+        <div><strong>Controladores Fiscales:</strong> procesamiento, registración y conservación de datos de interés fiscal.</div>
+        <div><strong>COT / Remitos Electrónicos:</strong> soporte para operaciones de traslado y documentación asociada.</div>
+      </div>
+    </div>
+
+    <div class="detail-copy">
+      <span class="tag">Servicios ARCA</span>
+      <h2>Automatización de registración fiscal para procesos más ágiles y transparentes</h2>
+      <h3>Integración pensada para el cumplimiento operativo</h3>
+      <p>
+        El régimen de facturación electrónica se extendió hasta cubrir su obligatoriedad
+        en múltiples escenarios. Por eso en Grupo MAS desarrollamos una herramienta automática
+        y transparente para la registración con ARCA.
+      </p>
+      <p>
+        Esta integración permite reducir fricciones operativas, mejorar la trazabilidad
+        y asegurar un flujo consistente entre los sistemas empresariales y los requerimientos fiscales.
+      </p>
+      <p>
+        También es posible adaptar estos desarrollos para responder a requisitos más complejos
+        de intercambio electrónico de datos, manteniendo el entorno de Microsoft Dynamics.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- MOVIL -->
+<section class="service-detail" id="movil">
+  <div class="container detail-grid">
+    <div class="detail-copy">
+      <span class="tag">Desarrollo Móvil</span>
+      <h2>Aplicaciones móviles integradas con el negocio en tiempo real</h2>
+      <h3>Soluciones móviles para tareas fuera de la oficina</h3>
+      <p>
+        El crecimiento de la tecnología permite estar conectados desde cualquier punto.
+        Por eso desarrollamos aplicaciones Android integradas 100% con MAS ERP y
+        Microsoft Dynamics NAV.
+      </p>
+      <p>
+        Las tareas externas no pueden quedar fuera del circuito de negocios. Con soluciones
+        móviles, los procesos fuera de las oficinas centrales se integran al flujo general,
+        reducen vulnerabilidad en trazabilidad y disminuyen tiempos de carga.
+      </p>
+      <p>
+        Estas herramientas pueden operar en tiempo real o en modo desconectado, manteniendo
+        sincronizadas las áreas internas y externas de la empresa.
+      </p>
+
+      <ul class="feature-list">
+        <li>Integración con ERP y plataformas de gestión</li>
+        <li>Sincronización online y offline</li>
+        <li>Indicadores remotos para perfiles gerenciales o de calidad</li>
+      </ul>
+    </div>
+
+    <div class="detail-visual dark-panel">
+      <span class="visual-badge">Movilidad empresarial</span>
+      <h4>Procesos externos integrados al flujo general del negocio</h4>
+      <p>
+        La movilidad permite incluir en el circuito operativo aquellas tareas que suceden
+        fuera de la oficina, mejorando control, seguimiento y acceso a información crítica.
+      </p>
+      <div class="mini-points">
+        <div>Captura de datos en terreno</div>
+        <div>Trazabilidad de operaciones</div>
+        <div>Información disponible para la gestión</div>
+        <div>Mayor continuidad operativa</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIALES -->
+<section class="section coverage">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Cobertura y experiencia</span>
+      <h2>Un socio tecnológico con alcance regional</h2>
+      <p>
+        Combinamos experiencia funcional, capacidad de desarrollo e integración tecnológica
+        para acompañar proyectos de distinta escala y complejidad.
+      </p>
+    </div>
+
+    <div class="coverage-grid">
+      <div class="coverage-item">Buenos Aires</div>
+      <div class="coverage-item">Uruguay</div>
+      <div class="coverage-item">Paraguay</div>
+      <div class="coverage-item">Chile</div>
+      <div class="coverage-item">Cumplimiento fiscal</div>
+      <div class="coverage-item">Desarrollo a medida</div>
+      <div class="coverage-item">Consultoría funcional</div>
+      <div class="coverage-item">Movilidad empresarial</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>Trabajemos juntos</h2>
+    <p>
+      Descubra cómo una estrategia tecnológica bien implementada puede optimizar sus procesos,
+      mejorar el cumplimiento y acelerar el crecimiento de su empresa.
+    </p>
+    <a href="contacto.html" class="btn">Contactar a Grupo MAS</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>Grupo MAS</h3>
+      <p>Juntos podemos darle vida a sus ideas mediante soluciones tecnológicas orientadas al negocio.</p>
+
+      <div class="social">
+        <a href="https://twitter.com/grupomas_soft?lang=en" target="_blank" aria-label="Twitter">X</a>
+        <a href="https://www.facebook.com/GrupoMAS.Software/reviews/" target="_blank" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/grupomas.software/?hl=es-la" target="_blank" aria-label="Instagram">ig</a>
+        <a href="https://www.linkedin.com/company/1153944/admin/" target="_blank" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+
+    <div>
+      <h3>Menú</h3>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="Nosotros.html">Nosotros</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Servicios</h3>
+      <ul>
+        <li><a href="#adaptacion">Adaptación / Localización</a></li>
+        <li><a href="#desarrollo">Desarrollo</a></li>
+        <li><a href="#consultoria">Consultoría Funcional</a></li>
+        <li><a href="#arca">Servicios ARCA</a></li>
+        <li><a href="#movil">Desarrollo Móvil</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Soluciones</h3>
+      <ul>
+        <li><a href="https://www.masaccount.com.ar/" target="_blank">Mas Account</a></li>
+        <li><a href="https://www.maslabs.com.ar/" target="_blank">Mas Labs</a></li>
+        <li><a href="./solution/business-central.html">Business Central</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Grupo MAS - Todos los derechos reservados.
+  </div>
+</footer>
+
+<script>
+function toggleISO(){
+  const panel = document.getElementById("isoPanel");
+  panel.classList.toggle("open");
+}
+
+function toggleMenu(){
+  const nav = document.getElementById("navLinks");
+  nav.classList.toggle("show");
+}
+
+document.querySelectorAll(".has-dropdown > a").forEach(function(link){
+  link.addEventListener("click", function(e){
+    if(window.innerWidth <= 900){
+      e.preventDefault();
+      this.parentElement.classList.toggle("open");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
