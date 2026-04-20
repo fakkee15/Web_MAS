@@ -3,16 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grupo MAS | Contacto</title>
+  <title>Grupo MAS | Política de Calidad</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="../public/img/ico/favicon.svg" type="image/x-icon">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous" />
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-  <script src="../public/js/validate.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="shortcut icon" href="../../public/img/ico/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous"/>
 
   <!-- Meta Pixel Code -->
   <script>
@@ -61,7 +56,7 @@
     }
 
     body{
-      background:#ffffff;
+      background:#fff;
       color:var(--dark);
       overflow-x:hidden;
       line-height:1.6;
@@ -160,14 +155,6 @@
       display:block;
     }
 
-    .brand{
-      color:#fff;
-      font-size:22px;
-      font-weight:800;
-      letter-spacing:-0.5px;
-      white-space:nowrap;
-    }
-
     .nav-links{
       list-style:none;
       display:flex;
@@ -198,18 +185,6 @@
       font-size:12px;
     }
 
-    .nav-cta{
-      padding:10px 16px;
-      background:var(--primary);
-      border-radius:10px;
-      font-weight:700;
-    }
-
-    .nav-cta:hover{
-      background:var(--primary-dark);
-      color:#fff !important;
-    }
-
     .has-dropdown .dropdown-menu{
       position:absolute;
       top:calc(100% + 14px);
@@ -232,10 +207,6 @@
       opacity:1;
       visibility:visible;
       transform:translateY(0);
-    }
-
-    .dropdown-menu li{
-      width:100%;
     }
 
     .dropdown-menu a{
@@ -290,7 +261,7 @@
 
     .hero-grid{
       display:grid;
-      grid-template-columns:1.1fr 0.9fr;
+      grid-template-columns:1.15fr 0.85fr;
       gap:40px;
       align-items:center;
       position:relative;
@@ -387,9 +358,13 @@
       padding:14px 16px;
     }
 
-    /* SECTION */
+    /* SECTIONS */
     .section{
       padding:90px 0;
+    }
+
+    .section.alt{
+      background:var(--light);
     }
 
     .section-header{
@@ -420,34 +395,33 @@
       font-size:17px;
     }
 
-    /* CONTACT GRID */
-    .contact-grid{
+    .content-grid{
       display:grid;
       grid-template-columns:1.05fr 0.95fr;
       gap:28px;
       align-items:stretch;
     }
 
-    .form-card,
-    .info-card{
+    .content-card,
+    .summary-card{
       border-radius:24px;
       padding:34px;
       box-shadow:var(--shadow);
     }
 
-    .form-card{
+    .content-card{
       background:#fff;
       border:1px solid var(--border);
     }
 
-    .info-card{
+    .summary-card{
       background:linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
       color:white;
       position:relative;
       overflow:hidden;
     }
 
-    .info-card::before{
+    .summary-card::before{
       content:"";
       position:absolute;
       width:220px;
@@ -458,88 +432,97 @@
       bottom:-60px;
     }
 
-    .info-card > *{
+    .summary-card > *{
       position:relative;
       z-index:1;
     }
 
     .card-title{
       font-size:28px;
-      margin-bottom:10px;
+      margin-bottom:12px;
     }
 
     .card-text{
-      color:var(--muted);
-      margin-bottom:28px;
+      color:var(--text);
+      margin-bottom:26px;
     }
 
-    .info-card .card-text{
+    .summary-card .card-text{
       color:#cbd5e1;
     }
 
-    .form-grid{
+    .policy-list{
+      list-style:none;
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
+      gap:14px;
+      margin-top:24px;
     }
 
-    .form-group{
+    .policy-list li{
       display:flex;
-      flex-direction:column;
-      gap:8px;
+      align-items:flex-start;
+      gap:14px;
+      padding:16px 18px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:#fff;
+      box-shadow:0 8px 20px rgba(15,23,42,0.04);
+    }
+
+    .policy-list li i{
+      color:var(--primary);
+      margin-top:4px;
+      font-size:16px;
+      flex-shrink:0;
+    }
+
+    .summary-points{
+      display:grid;
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .summary-point{
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:16px;
+      padding:16px;
+    }
+
+    .summary-point h4{
+      font-size:16px;
+      margin-bottom:6px;
+    }
+
+    .summary-point p{
+      color:#e2e8f0;
+      font-size:14px;
+    }
+
+    .download-box{
+      margin-top:28px;
+      padding:24px;
+      border-radius:20px;
+      background:linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%);
+      border:1px solid rgba(124,58,237,0.14);
+    }
+
+    .download-box h3{
+      font-size:22px;
+      margin-bottom:10px;
+    }
+
+    .download-box p{
+      color:var(--text);
       margin-bottom:18px;
     }
 
-    .form-group.full{
-      grid-column:1 / -1;
-    }
-
-    label{
-      font-size:14px;
-      font-weight:700;
-      color:var(--dark);
-    }
-
-    input,
-    textarea{
-      width:100%;
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:14px 16px;
-      font-size:15px;
-      color:var(--dark);
-      background:#fff;
-      outline:none;
-      transition:border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    input:focus,
-    textarea:focus{
-      border-color:rgba(124,58,237,0.4);
-      box-shadow:0 0 0 4px rgba(124,58,237,0.10);
-    }
-
-    textarea{
-      min-height:160px;
-      resize:vertical;
-    }
-
-    .messages{
-      font-size:13px;
-      color:#dc2626;
-      min-height:16px;
-    }
-
-    .captcha-wrap{
-      margin:10px 0 18px;
-    }
-
-    .btn-submit{
+    .btn-primary{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding:15px 24px;
+      padding:14px 22px;
       border:none;
       border-radius:12px;
       background:var(--primary);
@@ -550,85 +533,26 @@
       box-shadow:0 14px 30px rgba(124,58,237,0.22);
     }
 
-    .btn-submit:hover{
+    .btn-primary:hover{
       background:var(--primary-dark);
       transform:translateY(-2px);
+      color:#fff;
     }
 
-    /* INFO BLOCKS */
-    .contact-points{
-      display:grid;
-      gap:14px;
-      margin-top:22px;
-    }
-
-    .contact-point{
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:16px;
-      padding:16px;
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-    }
-
-    .contact-icon{
-      width:42px;
-      height:42px;
-      border-radius:12px;
-      background:rgba(255,255,255,0.10);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-shrink:0;
-      font-size:18px;
-    }
-
-    .contact-point h4{
-      font-size:16px;
-      margin-bottom:4px;
-    }
-
-    .contact-point p,
-    .contact-point a{
-      color:#e2e8f0;
-      font-size:14px;
-      word-break:break-word;
-    }
-
-    /* EXTRA SECTION */
-    .support-section{
-      background:var(--light);
-    }
-
-    .support-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:22px;
-    }
-
-    .support-card{
+    .highlight{
       background:#fff;
       border:1px solid var(--border);
-      border-radius:20px;
-      padding:26px;
-      box-shadow:0 10px 30px rgba(15,23,42,0.04);
+      border-radius:24px;
+      padding:34px;
+      box-shadow:var(--shadow);
+      text-align:center;
     }
 
-    .support-card i{
-      font-size:26px;
-      color:var(--primary);
-      margin-bottom:14px;
-    }
-
-    .support-card h3{
-      font-size:20px;
-      margin-bottom:10px;
-    }
-
-    .support-card p{
+    .highlight p{
+      font-size:18px;
       color:var(--text);
-      font-size:15px;
+      max-width:900px;
+      margin:0 auto;
     }
 
     /* CTA */
@@ -734,6 +658,9 @@
       flex:1;
       min-width:180px;
       background:#fff;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:12px 14px;
     }
 
     .newsletter button{
@@ -754,7 +681,6 @@
       color:#94a3b8;
     }
 
-    /* WhatsApp */
     .btn-wsp{
       position:fixed;
       width:60px;
@@ -777,12 +703,10 @@
       color:#fff;
     }
 
-    /* Responsive */
     @media (max-width: 1080px){
       .hero-grid,
-      .contact-grid,
-      .footer-grid,
-      .support-grid{
+      .content-grid,
+      .footer-grid{
         grid-template-columns:1fr;
       }
 
@@ -868,10 +792,6 @@
         font-size:34px;
       }
 
-      .form-grid{
-        grid-template-columns:1fr;
-      }
-
       .iso-tab{
         display:none;
       }
@@ -895,8 +815,9 @@
         font-size:29px;
       }
 
-      .form-card,
-      .info-card{
+      .content-card,
+      .summary-card,
+      .highlight{
         padding:24px;
       }
 
@@ -913,242 +834,187 @@
     }
   </style>
 </head>
-
 <body>
 
-  <!-- ISO -->
-  <div class="iso-tab">
-    <div class="iso-button" onclick="toggleISO()">ISO 9001</div>
-    <div class="iso-panel" id="isoPanel">
-      <img src="assets/images/ISO.jpg" alt="Certificación ISO 9001">
-    </div>
+ <!-- ISO -->
+
+<div class="iso-tab">
+  <div class="iso-button" onclick="toggleISO()">
+    ISO 9001
   </div>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="navbar-inner">
-      <a href="https://grupomas.software">
-  <img src="assets/images/logo.png" class="logo" alt="Grupo MAS">
-</a>
+  <div class="iso-panel" id="isoPanel">
+    <img src="assets/images/ISO.jpg" alt="ISO 9001">
+  </div>
+</div>
 
-      <button class="nav-toggle" onclick="toggleMenu()">☰</button>
+<!-- NAVBAR -->
 
-      <nav>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="https://grupomas.software/">Inicio</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="https://grupomas.software" class="logo-link">
+      <img src="assets/images/logo.png" class="logo" alt="Grupo MAS">
+    </a>
 
-          <li class="has-dropdown">
-            <a href="Servicios.html">Servicios <span class="arrow">▾</span></a>
-            <ul class="dropdown-menu">
-              <li><a href="Servicios.html#adaptacion">Adaptación / Localización</a></li>
-              <li><a href="Servicios.html#desarrollo">Desarrollo</a></li>
-              <li><a href="Servicios.html#consultoria">Consultoría Funcional</a></li>
-              <li><a href="Servicios.html#arca">Servicios ARCA</a></li>
-              <li><a href="Servicios.html#movil">Desarrollo Móvil</a></li>
-            </ul>
-          </li>
+    <button class="nav-toggle" onclick="toggleMenu()">☰</button>
 
-          <li class="has-dropdown">
-            <a href="#">Soluciones <span class="arrow">▾</span></a>
-            <ul class="dropdown-menu">
-              <li><a href="https://www.masaccount.com.ar/" target="_blank">Mas Account</a></li>
-              <li><a href="https://www.maslabs.com.ar/" target="_blank">Mas Labs</a></li>
-              <li><a href="https://www.microsoft.com/es-es/dynamics-365/products/business-central">Business Central</a></li>
-            </ul>
-          </li>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="https://grupomas.software">Inicio</a></li>
+        <li><a href="Nosotros.html" class="active">Nosotros</a></li>
 
-          <li><a href="contacto.html" class="active">Contacto</a></li>
-          
-          
-        </ul>
-      </nav>
-    </div>
-  </header>
+        <li class="has-dropdown">
+          <a href="Servicios.html">Servicios <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="Servicios.html#adaptacion">Adaptación / Localización</a></li>
+            <li><a href="Servicios.html#desarrollo">Desarrollo</a></li>
+            <li><a href="Servicios.html#consultoria">Consultoría Funcional</a></li>
+            <li><a href="Servicios.html#arca">Servicios ARCA</a></li>
+            <li><a href="Servicios.html#movil">Desarrollo Móvil</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <a href="#">Soluciones <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="https://www.masaccount.com.ar/" target="_blank">Mas Account</a></li>
+            <li><a href="https://www.maslabs.com.ar/" target="_blank">Mas Labs</a></li>
+            <li><a href="https://www.microsoft.com/es-es/dynamics-365/products/business-central">Business Central</a></li>
+          </ul>
+        </li>
+
+        <li><a href="contacto.html">Contacto</a></li>
+        
+        
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
       <div>
         <span class="badge">GRUPO MAS</span>
-        <h1>Conversemos sobre el próximo paso de su empresa</h1>
+        <h1>Política de Calidad</h1>
         <p>
-          Si necesita acompañamiento tecnológico, consultoría funcional, desarrollo,
-          integración con ARCA o soluciones empresariales, complete el formulario y
-          nuestro equipo se pondrá en contacto a la brevedad.
+          En Grupo MAS trabajamos con una visión orientada a la mejora continua,
+          la satisfacción del cliente y el fortalecimiento de relaciones duraderas
+          basadas en calidad, innovación y compromiso.
         </p>
 
         <div class="hero-info">
-          <div><i class="fas fa-envelope"></i> comercial@grupomas.software</div>
-          <div><i class="fas fa-phone-alt"></i> +54 11 2712 3632</div>
-          <div><i class="fab fa-whatsapp"></i> Atención directa</div>
+          <div><i class="fas fa-check-circle"></i> Mejora continua</div>
+          <div><i class="fas fa-users"></i> Enfoque al cliente</div>
+          <div><i class="fas fa-award"></i> Calidad certificable</div>
         </div>
       </div>
 
       <div class="hero-side">
         <div class="hero-side-content">
-          <h3>¿En qué podemos ayudarlo?</h3>
+          <h3>Nuestro compromiso</h3>
           <p>
-            Puede escribirnos por consultas comerciales, implementación de soluciones,
-            soporte inicial o nuevas oportunidades de negocio.
+            Desarrollamos y comercializamos soluciones de software con procesos
+            orientados a la calidad, la eficiencia y la evolución tecnológica.
           </p>
           <ul>
-            <li>Consultoría funcional y procesos</li>
-            <li>Desarrollo e integraciones</li>
-            <li>Adaptación / localización</li>
-            <li>Servicios ARCA</li>
-            <li>Soluciones móviles y empresariales</li>
+            <li>Servicios de software de gestión a medida</li>
+            <li>Soluciones On Premise y SaaS</li>
+            <li>ERP Microsoft On Premise y SaaS</li>
+            <li>Innovación y adaptación constante</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FORMULARIO -->
+  <!-- INTRO -->
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <span class="eyebrow">Contacto</span>
-        <h2>Envíenos su consulta</h2>
+        <span class="eyebrow">Calidad</span>
+        <h2>Una política alineada con nuestra forma de trabajar</h2>
         <p>
-          Complete el formulario con sus datos y el detalle de su necesidad.
-          Nos contactaremos con usted a la brevedad.
+          GRUPO MAS SRL es una empresa especializada en servicios de comercialización,
+          diseño y desarrollo de software de gestión a medida, tanto On Premise como SaaS,
+          así como en la comercialización, diseño y desarrollo del sistema de gestión ERP de Microsoft.
         </p>
       </div>
 
-      <div class="contact-grid">
-        <div class="form-card">
-          <h3 class="card-title">Formulario de contacto</h3>
+      <div class="content-grid">
+        <div class="content-card">
+          <h3 class="card-title">Principios de actuación</h3>
           <p class="card-text">
-            Estamos listos para escuchar su proyecto, resolver dudas y ayudarlo a encontrar
-            la mejor solución para su empresa.
+            La Dirección de GRUPO MAS apuesta por la implantación de un sistema de gestión
+            de la calidad adecuado a la naturaleza de sus actividades y establece los
+            siguientes principios:
           </p>
 
-          <form id="form" action="bat/enviar.php" method="post" enctype="multipart/form-data">
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre">
-                <div class="messages"></div>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Ingrese su email">
-                <div class="messages"></div>
-              </div>
-
-              <div class="form-group full">
-                <label for="telefono">Teléfono</label>
-                <input type="tel" name="telefono" id="telefono" placeholder="Ingrese su teléfono">
-                <div class="messages"></div>
-              </div>
-
-              <div class="form-group full">
-                <label for="mensaje">Consulta</label>
-                <textarea name="mensaje" id="mensaje" placeholder="Cuéntenos en qué podemos ayudarlo"></textarea>
-              </div>
-            </div>
-
-            <div class="captcha-wrap">
-              <div class="g-recaptcha" data-sitekey="6LecVlgdAAAAADOiVl7Y--oSGS1AqEnyosC5g5ux"></div>
-            </div>
-
-            <div id="status"></div>
-
-            <button class="btn-submit" type="submit" onclick="enviar()">
-              <i class="fas fa-paper-plane"></i>
-              Enviar consulta
-            </button>
-          </form>
+          <ul class="policy-list">
+            <li><i class="fas fa-check-circle"></i><span>Interpretar los requerimientos y necesidades de los clientes a fin de satisfacer sus expectativas del servicio.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Construir relaciones de negocios a largo plazo, convirtiéndonos en un socio estratégico.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Proporcionar un entorno de trabajo estimulante y agradable que facilite el desempeño de nuestro personal, con espíritu de equipo y servicio al cliente.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Mantener una filosofía de creatividad e innovación y trabajar en la mejora continua para adaptarnos a un sector en constante evolución tecnológica.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Trabajar con un sistema de gestión de calidad que establezca nuestra forma de actuar, fijando objetivos y metas que impulsen la mejora.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Revisar periódicamente este sistema de gestión para garantizar servicios de máxima calidad apoyados en procesos de mejora continua y eficacia.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Fomentar la competencia y la formación permanente de nuestro personal.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Cumplir con todos los requisitos legales aplicables y con aquellos compromisos que suscribamos voluntariamente.</span></li>
+            <li><i class="fas fa-check-circle"></i><span>Mantener una buena relación con nuestros proveedores como colaboradores de importancia para nuestra empresa.</span></li>
+          </ul>
         </div>
 
-        <div class="info-card">
-          <h3 class="card-title">Información de contacto</h3>
+        <aside class="summary-card">
+          <h3 class="card-title">Resumen ejecutivo</h3>
           <p class="card-text">
-            También puede contactarse por otras vías. Nuestro equipo comercial está disponible
-            para responder su consulta y acompañarlo en el proceso.
+            Nuestra política de calidad se enfoca en generar valor sostenible para clientes,
+            colaboradores y socios estratégicos mediante procesos claros y mejora continua.
           </p>
 
-          <div class="contact-points">
-            <div class="contact-point">
-              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-              <div>
-                <h4>Email comercial</h4>
-                <a href="mailto:comercial@grupomas.software">comercial@grupomas.software</a>
-              </div>
+          <div class="summary-points">
+            <div class="summary-point">
+              <h4>Enfoque al cliente</h4>
+              <p>Buscamos comprender la necesidad real de cada organización para brindar soluciones efectivas.</p>
             </div>
 
-            <div class="contact-point">
-              <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
-              <div>
-                <h4>Teléfono</h4>
-                <a href="tel:+541127123632">+54 11 2712 3632</a>
-              </div>
+            <div class="summary-point">
+              <h4>Innovación constante</h4>
+              <p>Promovemos creatividad, adaptación tecnológica y evolución permanente de nuestros servicios.</p>
             </div>
 
-            <div class="contact-point">
-              <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-              <div>
-                <h4>WhatsApp</h4>
-                <a href="https://wa.me/5491127123632?text=Estoy%20contactándome%20desde%20la%20web%20" target="_blank">
-                  Escribir por WhatsApp
-                </a>
-              </div>
+            <div class="summary-point">
+              <h4>Equipo y formación</h4>
+              <p>Impulsamos un entorno de trabajo saludable y el desarrollo profesional de nuestro personal.</p>
             </div>
 
-            <div class="contact-point">
-              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div>
-                <h4>Ubicación</h4>
-                <p>Av. Argentina 4174, Villa Ballester</p>
-              </div>
+            <div class="summary-point">
+              <h4>Compromiso integral</h4>
+              <p>Trabajamos con responsabilidad frente a clientes, requisitos legales y proveedores estratégicos.</p>
             </div>
           </div>
-        </div>
+
+          <div class="download-box">
+            <h3>Descargar documento</h3>
+            <p>Acceda a la versión PDF oficial de la Política de Calidad de Grupo MAS.</p>
+            <a class="btn-primary" href="POL-CA-001_POLITICA_DE_CALIDAD_GrupoMAS.pdf" download>
+              <i class="fas fa-file-pdf"></i>
+              Descargar PDF
+            </a>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- APOYO -->
-  <section class="section support-section">
+  <!-- CIERRE -->
+  <section class="section alt">
     <div class="container">
-      <div class="section-header">
-        <span class="eyebrow">Acompañamiento</span>
-        <h2>Más que un formulario, una puerta de entrada a soluciones reales</h2>
+      <div class="highlight">
         <p>
-          Contactarnos es el primer paso para empezar a resolver necesidades concretas
-          con una mirada práctica, tecnológica y orientada al negocio.
+          La Dirección de <strong>GRUPO MAS</strong> comunica y difunde la presente política
+          a todo su equipo y a todas las personas que trabajan en su nombre, asegurando además
+          que se encuentre a disposición de clientes y del público en general, y que sea revisada
+          periódicamente para garantizar su vigencia y adecuación.
         </p>
-      </div>
-
-      <div class="support-grid">
-        <article class="support-card">
-          <i class="fas fa-lightbulb"></i>
-          <h3>Asesoramiento</h3>
-          <p>
-            Analizamos su necesidad y lo orientamos hacia la solución más adecuada según
-            su contexto operativo y objetivos.
-          </p>
-        </article>
-
-        <article class="support-card">
-          <i class="fas fa-cogs"></i>
-          <h3>Implementación</h3>
-          <p>
-            Acompañamos procesos de adopción, integración y evolución tecnológica
-            con una visión funcional y técnica.
-          </p>
-        </article>
-
-        <article class="support-card">
-          <i class="fas fa-handshake"></i>
-          <h3>Relación de largo plazo</h3>
-          <p>
-            Buscamos construir vínculos sólidos con nuestros clientes, priorizando
-            cercanía, compromiso y resultados.
-          </p>
-        </article>
       </div>
     </div>
   </section>
@@ -1156,12 +1022,12 @@
   <!-- CTA -->
   <section class="cta">
     <div class="container">
-      <h2>¿Listo para avanzar?</h2>
+      <h2>¿Quiere conocer más sobre Grupo MAS?</h2>
       <p>
-        Escríbanos hoy y conversemos sobre cómo Grupo MAS puede acompañar la evolución
-        tecnológica de su empresa.
+        Contáctenos para conocer nuestras soluciones, servicios y la forma en que acompañamos
+        la evolución tecnológica de cada empresa.
       </p>
-      <a href="#form" class="cta-btn">Ir al formulario</a>
+      <a href="../../views/contacto.html" class="cta-btn">Ir a contacto</a>
     </div>
   </section>
 
@@ -1188,11 +1054,11 @@
       <div>
         <h3>Menú</h3>
         <ul>
-          <li><a href="../index.html">Inicio</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="https://grupomas.software/">Inicio</a></li>
+          <li><a href="Nosotros.html">Nosotros</a></li>
+          <li><a href="Servicios.html">Servicios</a></li>
           <li><a href="contacto.html">Contacto</a></li>
-          <li><a href="./servis/politica-calidad.html">Política calidad</a></li>
+          <li><a href="politica-calidad.html">Política calidad</a></li>
         </ul>
       </div>
 
@@ -1201,15 +1067,15 @@
         <ul>
           <li><a href="https://www.masaccount.com.ar/" target="_blank">Mas Account</a></li>
           <li><a href="https://www.maslabs.com.ar/" target="_blank">Mas Labs</a></li>
-          <li><a href="./solution/business-central.html">Business Central</a></li>
+          <li><a href="../solution/business-central.html">Business Central</a></li>
         </ul>
       </div>
 
       <div>
         <h3>Contacto</h3>
         <ul>
-          <li>Av. Argentina 4174, Villa Ballester</li>
-          <li><a href="tel:+541127123632">+54 11 2712 3632</a></li>
+          <li>Av. Primera Junta 3009, Munro, Vicente López</li>
+          <li><a href="tel:+541170781319">+54 11 7078 1319</a></li>
           <li><a href="mailto:comercial@grupomas.software">comercial@grupomas.software</a></li>
         </ul>
       </div>
@@ -1223,9 +1089,6 @@
   <a href="https://wa.me/5491127123632?text=Estoy%20contactándome%20desde%20la%20web%20" class="btn-wsp" target="_blank" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
-
-  <script src="../public/js/scripts.js"></script>
-  <script src="../public/js/bootstrap.bundle.min.js"></script>
 
   <script>
     function toggleISO(){
